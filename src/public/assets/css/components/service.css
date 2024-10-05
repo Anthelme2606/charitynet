@@ -1,0 +1,12 @@
+.service-svg{
+   
+    font-size:20px !important;
+    color:var(--violet);
+}
+.service-svg svg{
+    width:40px;
+    height:40px;
+}
+.text-or{
+    color:var(--orange) !important;
+}

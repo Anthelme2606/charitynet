@@ -1,0 +1,118 @@
+.login-container{
+    position: relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin:0;
+    padding: 0;
+    width:400px;
+    height:500px;
+    max-width:400px;
+    overflow: hidden;
+    background-color:var(--violet);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.card,.card-body,.card-header,.card-footer{
+    border: none; 
+    outline:none;
+
+}
+.social-medias{
+    width:100%;
+ 
+    display:flex;
+    justify-content: space-between;
+}
+.google,.twitter{
+    background-color:var(--white);
+    border:1px solid var(--orange);
+    width:80px;
+    text-align: center;
+    padding:4px;
+    border-radius:6px;
+    color:var(--primary-color);
+    font-size: 20px;
+    transition: background-color 0.3s ease-in-out;
+}
+.google:hover,.twitter:hover{
+    color:var(--white);
+    background-color:var(--orange);
+}
+.form-container{
+    margin:10px auto;
+    width:100%;
+}
+
+.form-container form{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.inputer,.btn-log{
+    padding: 8px;
+    width:300px;
+    border:none !important;
+    outline: none;
+    border-radius: 20px;
+}
+ .inputer{
+   
+    border-bottom: 1px solid black;
+  
+}
+.btn-log{ 
+   
+    background-color:var(--primary-color);
+    color:var(--white);
+}
+.btn-log:hover{
+    background-color:var(--violet)!important;
+    color:var(--white);
+}
+.blue-violet{
+    background-color: var(--violet)!important;
+}
+.login-waves{
+    position: absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    
+}
+.logo-container img{
+    width:80px;
+    height:80px;
+    border-radius:50% !important;
+}
+.line-container {
+display: flex;
+align-items: center;
+text-align: center;
+margin: 20px 0; 
+}
+
+.line-h {
+flex: 1;
+height: 1px; 
+background-color: #002; 
+margin: 0 10px; 
+}
+.login-body{
+    margin:10px; 
+}
+
+@media(max-width:768px){
+    .login-body{
+        margin:0;
+        padding:0;
+        width:100%;
+    }
+    .login-container{
+        width:100%;
+    }
+}

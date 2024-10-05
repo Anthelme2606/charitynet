@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('./public/assets/fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('./public/assets/fonts/Roboto-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('./public/assets/fonts/Roboto-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('./public/assets/fonts/Roboto-BoldItalic.ttf') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('./public/assets/fonts/Roboto-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('./public/assets/fonts/Roboto-BlackItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('./public/assets/fonts/Roboto-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('./public/assets/fonts/Roboto-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('./public/assets/fonts/Roboto-MediumItalic.ttf') format('truetype');
+    font-weight: 500;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('./public/assets/fonts/Roboto-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('./public/assets/fonts/Roboto-ThinItalic.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+}
+:root{
+    --body:#F7FAFC;
+    --violet: #541670;
+    --orange: #f8a708;
+    --primary-color:blueviolet;
+    --white: #fff;
+    --sidebar:#f7fafc;
+    --green:#008000;
+    --gray:#e0e0e0;
+  
+  
+}
+* {
+    box-sizing: border-box !important;
+    /* margin:0 !important;
+    padding:0 !important; */
+  }
+
+body{
+    position:relative;
+    font-family: 'Roboto', sans-serif !important;
+    box-sizing: border-box !important;
+    margin:0 !important;
+    padding:0 !important;
+    background-color:var(--body) !important;
+    width:100vw !important;
+    overflow-x:hidden !important;
+   
+
+}
+.fw-30{
+    font-size:30px !important
+}
+.bgV-cW{
+    color:var(--white) !important;
+    background-color: var(--violet) !important;
+}
+.global-container{
+    width:100% !important;
+    margin:0;
+    padding:0;
+    overflow-x: hidden !important;
+}
+.overflow-hidden{
+    overflow-x:hidden !important;
+}
+.card {
+    box-shadow: 0 0 15px rgba(0 0 0 0.1);
+    color:var(--white);
+}
+.card,.card-footer,.card-header,.card.body{ border:none !important;
+    outline:none !important;}
+.donate-type,.border-orange-500 {
+    border-color: 1px solid var(--orange);
+    border-radius:6px;
+}
+.donate-type,.bg-violet-600{
+    background-color:var(--violet);
+
+}
+.lead-bottom-text{
+    margin-bottom:120px !important;
+}
+/*****Tastr****/
+.main-content {
+    margin-left: 200px !important;
+    transition: margin-left 0.3s ease-in-out !important;
+    padding:0.50rem !important;
+  }
+  .main-content.sidebar-closed {
+    margin-left: 0 !important;
+  }
+  .b0-o0{
+    cursor:pointer;
+    border: none !important;
+    outline:none !important;
+
+  }
+  .auth{
+    position:absolute;
+    top:22px;
+    right:10px;
+    text-align:center;
+    cursor:pointer;
+   
+
+  }
+  .auth svg{
+    cursor:pointer;
+    width: 30px;
+    height:30px;
+    border-radius: 50%;
+    color:var(--orange);
+  }
+  .b0-o0:focus{
+    border: none !important;
+    outline:none !important;
+  }
+@media(max-width:768px){
+    .lead-bottom-text{
+        margin-bottom:30px !important;
+    }  
+    .sidebar {
+      
+        transform:translateX(-250px) !important;
+        
+             
+         }
+         .sidebar.closed {
+         transform: translateX(0) !important;
+         
+         
+       }
+         .main-content {
+       
+         left:0 !important;
+         margin-left: 0 !important ;
+         /* padding:6px !important ;*/
+         flex:1 1 100%;
+          width:100%  !important;
+         overflow:hidden !important; 
+         
+       
+       }
+}

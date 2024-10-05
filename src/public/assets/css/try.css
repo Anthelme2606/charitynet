@@ -1,0 +1,23 @@
+.try{
+    position:fixed !important;
+    top:50%;
+    right:25px;
+    transform:translateY(-50%);
+    width: 50px;
+    height:50px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    /* color:var(--white); */
+    color:black;
+    background-color:var(--orange);
+    z-index:9999;
+}
+.try .inner{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
