@@ -1,4 +1,5 @@
 const UserRepository = require('../../repositories/users/userRepository');
+const SessionRepository = require('../../repositories/users/sessionRepository');
 const BeneficiaireReposistory = require('../../repositories/beneficiaires/beneficiaireRepository');
 
 class UserService{
@@ -17,7 +18,17 @@ class UserService{
 
     static async login(data){
         try{
-            return await UserRepository.login(data);
+            let {user,token}= await UserRepository.login(data);
+            const sessionData={};
+            sessionData.token=token;
+            sessionData.userId=user.id;
+           const session= await SessionRepository.createSession(sessionData);
+           if(!session){
+            throw new Error('An error occured');
+           }
+           const lifeTime=session.expireAt;
+           user =await this.currentUser(user.id);
+            return {user,token,lifeTime};
         }catch(error){
             throw error;
         }
@@ -30,6 +41,13 @@ class UserService{
         }
     }
     static async getById(userId){
+        try{
+            return await UserRepository.getById(userId);
+        }catch(error){
+            throw error;
+        }
+    }
+    static async currentUser(userId){
         try{
             return await UserRepository.getById(userId);
         }catch(error){

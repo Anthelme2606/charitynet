@@ -1,12 +1,14 @@
 .navbar {
     background-color: var(--violet);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--white) !important;
-    width: 100%; 
-    margin: 0 !important;
-    padding: 0 !important;
+    position: fixed !important;
+    top: 0 !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+}
+
+.bg-nav{
+    background-color: var(--violet) !important;
+    color: var(--white) !important;  
 }
 
 .container-fluid {
@@ -16,8 +18,8 @@
 }
 
 .logo {
-    width: 80px;
-    height: 80px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
 }
 

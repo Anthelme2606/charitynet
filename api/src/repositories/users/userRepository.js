@@ -143,9 +143,9 @@ static async getByEmail(email){
         throw new Error('Email ou mot de passe incorrect');
       }
       const token = jwt.sign(
-        { id: user.id,email:user.email, username: user.username, userType: user.userType },
+        { id: user.id},
         process.env.SECRET_KEY,
-        { expiresIn: '1h' } 
+        { expiresIn:  process.env.LIFE_TIME } 
       );
 
       return { user, token };

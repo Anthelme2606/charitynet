@@ -1,5 +1,6 @@
 const BeneficiaireReposistory = require('../../repositories/beneficiaires/beneficiaireRepository');
 const UserReposistory = require('../../repositories/users/userRepository');
+const ProjetReposistory = require('../../repositories/projets/projetRepository');
 
 class BeneficiaireService{
     static async create(data){
@@ -36,6 +37,22 @@ class BeneficiaireService{
             throw error;
         }
     }
+    static async getCurrentBeneficiaire(userId){
+        try{
+            return await BeneficiaireReposistory.getByUser(userId);
+        }catch(error){
+            throw error;
+        }
+    }
+    static async getMyProjects(beneId){
+        try{
+            return await ProjetReposistory.getByBene(beneId);
+        }catch(error){
+            throw error;
+        }
+    }
+    
+   
     static async getAll(){
         try{
             return await BeneficiaireReposistory.getAll();

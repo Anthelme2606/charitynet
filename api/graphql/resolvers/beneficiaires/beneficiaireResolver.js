@@ -11,6 +11,9 @@ module.exports = {
     getBeneficiaire: async (_, { beneId }, { user }) => { 
       return await BeneficiaireService.getById(beneId);     
     },
+    getCurrentBeneficiaire: async (_, args, { user }) => { 
+      return await BeneficiaireService.getCurrentBeneficiaire(user.id);     
+    },
   },
 
   Mutation: {
@@ -29,6 +32,9 @@ module.exports = {
   Beneficiaire:
  { user:async (parent)=>{
     return await BeneficiaireService.getUser(parent.userId);
+  },
+  myProjets:async(parent)=> {
+    return await BeneficiaireService.getMyProjects(parent.id);
   }
 }
 };

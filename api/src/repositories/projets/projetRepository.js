@@ -5,10 +5,11 @@ class ProjetRepository {
     static async createProjet(data, auth) {
         try {
             // Only Beneficiaries or Admins can create a project
+            console.log(auth);
             if (auth.userType !== 'Beneficiary') {
                 throw new Error('Unauthorized: Only beneficiaries or admins can create a project.');
             }
-          data.beneficiaireId=auth.id;
+       
             const projet = await ProjetModel.create(data);
             return projet;
         } catch (error) {
@@ -54,6 +55,18 @@ class ProjetRepository {
             throw error;
         }
     }
+    static async getByBene(beneficiaireId) {
+        try {
+            const projets = await ProjetModel.findAll({ where: { beneficiaireId } });
+            if (!projets || projets.length === 0) {
+                throw new Error('No projects found for the specified beneficiary');
+            }
+            return projets;
+        } catch (error) {
+            throw error;
+        }
+    }
+    
 
     // Get all projects
     static async getProjets() {

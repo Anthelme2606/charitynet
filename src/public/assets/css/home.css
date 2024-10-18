@@ -3,7 +3,7 @@
     color: var(--white);
     min-height: 60vh;
     position: relative;
-    overflow: hidden; 
+    overflow-x: hidden !important; 
     margin: 0; 
     padding: 0; 
     box-sizing: border-box; 

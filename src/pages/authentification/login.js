@@ -1,77 +1,123 @@
-import React from 'react';
-import charity from '../../public/assets/images/charity.jpg';
-import '../../public/assets/css/auth/login.css';
-import PageLayout from '../../layouts/pageLayout';
+import React, { useState } from "react";
+import { useMutation } from '@apollo/client';
+import { useNavigate } from 'react-router-dom';
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import charity from "../../public/assets/images/charity.jpg";
+import { LOGIN_USER } from "../../lib/mutations"; 
+import { useUser } from "../../app/providers/AppProvider";
+import Cookies from 'js-cookie';
+import styles from './Login.module.css'; 
+import { NavLink } from "react-router-dom";
+import ROUTES from "../../app/routes/names";
 
-const Login=()=>{
-    return (
-        <PageLayout
-        pageTitle="connexion"
-        >
-            <div className='d-flex justify-content-center align-items-center flex-column  login-body'>
-            <div className="login-container position-relative">
-        <div className="card w-100 m-0 p-0 blue-violet">
-            <div className="card-header d-flex flex-column justify-content-center align-items-center text-white blue-violet">
-               <div className="logo-container">
-                <img
-                src={charity}
-                alt="logo"
-                className="img-fluid"
-                />
-               </div>
-                <span className="text-center fs-2">
-                    Connexion
-                </span>
-               
-            </div>
-           
-            
-            <div className="card-body blue-violet">
-               <div className="social-medias">
-                <div className="google">
-                    <span className="bi bi-google"></span>
-                </div>
-                <div className="twitter">
-                    <span className="bi bi-twitter"></span>
-                </div>
+const Login = () => {
+  
+  const [username, setUsername] = useState(''); 
+  const [password, setPassword] = useState(''); 
+  const { setUser } = useUser(); 
+  const navigate = useNavigate();
+ 
 
-               </div>
-               <div className="line-container">
-                <div className="line-h"></div>
-                <span className="text-white">OU</span>
-                <div className="line-h"></div>
-            </div>
-               <div className="form-container">
-                <form action="" method="post">
-                    <div className="mb-4">
-                        <input className="inputer" type="email" placeholder="username or email"/>
-                    </div>
-                    <div className="mb-4">
-                        <input className="inputer" type="password" placeholder="username or email"/>
-                    </div>
-                    
-                    <div className="mb-0">
-                        <button className=" btn-log" type="submit">Se connecter</button>
-                    </div>
-                    
-                </form>
-               </div>
-            </div>
+  const [loginUser, { loading }] = useMutation(LOGIN_USER, {
+    onCompleted: (data) => {
+      if(data && data.login){
+  
+      const { token, user, lifeTime } = data.login;
+      Cookies.set('token', token, { expires: new Date(parseInt(lifeTime)) });
+      Cookies.set('lifeTime', parseInt(lifeTime));  
+
+      setUser({
+        isAuth: true,
+        auth: {
+          userType: user.userType,
+          reference:user.referenceNumber,
+        
+        },
+      });
+
+      toast.success('Login successful!...', {
+        position: "top-right",
+        autoClose: 2000,
+      });
+
+      setTimeout(() => {
+        navigate(ROUTES.DASHBOARD);
+      }, 2000);
+    }else {
+      toast.error('Invalid data received.', {
+        position: "top-right",
+        autoClose: 2000,
+      });
+    }
+    },
+    onError: (error) => {
+      toast.error(` ${error.message}`, {
+        position: "top-right",
+        autoClose: 2000,
+      });
+    }
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    loginUser({
+      variables: {
+        input: { username, password },
+      },
+    });
+  };
+
+  return (
+    <div className="w-100 m-1 p-1 d-flex justify-content-center align-items-center">
+    <div className={`${styles.container}   d-flex justify-content-center align-items-center flex-column vh-100`}>
+    <NavLink to={ROUTES.HOME}>
+  <div className={styles['logo-container']}>
+    <img src={charity} alt="Logo de l'application" className={styles.logo} />
+  </div>
+</NavLink>
+
+     
+
+      <form className={styles['login-form']} onSubmit={handleSubmit}>
+        <h2>Connexion</h2>
+        <div className={styles['form-group']}>
+          <label htmlFor="username">Nom d'utilisateur</label>
+          <input
+          className={`${styles.input}`}
+            type="text"
+            id="username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
         </div>
-        <div className="position-absolue w-100 login-waves">
-            <svg xmlns="http://www.w3.org/2000/svg" 
-            viewBox="0 0 1440 320"><path fill="#f8a708" 
-            fill-opacity="1" d="M0,32L48,69.3C96,107,192,181,288,192C384,203,480,149,576,122.7C672,96,768,96,864,117.3C960,139,1056,181,1152,186.7C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z">
-
-            </path></svg>
+        <div className={styles['form-group']}>
+          <label htmlFor="password">Mot de passe</label>
+          <input
+           className={`${styles.input}`}
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
         </div>
+        <button className={`${styles.button}`} type="submit" disabled={loading}>
+          {loading ? 'Logging in...' : 'Se connecter'}
+        </button>
+        <p>Ou connectez-vous avec :</p>
+        <div className={styles['social-login']}>
+          <button className={`${styles['social-button']} ${styles.button}`}>Google</button>
+          <button className={`${styles['social-button']} ${styles.button}`}>Facebook</button>
+          <button className={`${styles['social-button']} ${styles.button}`}>Twitter</button>
+        </div>
+        <p>Pas encore de compte ? <NavLink to={ROUTES.SIGNUP}>Inscrivez-vous</NavLink></p>
+      </form>
     </div>
-            </div>
-       
-    </PageLayout>
-          
+    </div>
+  );
+};
 
-    )
-
-}
 export default Login;

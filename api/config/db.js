@@ -20,17 +20,19 @@ async function createDatabaseIfNotExists(dbName) {
   await connection.end();
 }
 // // Exemple d'utilisation
-// const tableName = 'users'; 
-// const columnName = 'referenceNumber'; 
+// const tableName = 'projets'; 
+// const columnName = 'image'; 
 // const columnOptions = {
 //   type: Sequelize.STRING, 
-//   allowNull: false, 
-//   unique: true 
+//   allowNull: true, 
+// 
 // };
-const tableName = 'donors';
+const tableName = 'projets';
 const modifications = [
-  { action: 'DROP', column: 'EMAIL', options: '' },
+  { action: 'ADD', column: 'objectif', options: 'DECIMAL(10, 2) NULL' }, // DECIMAL pour les montants financiers
+  { action: 'ADD', column: 'resume', options: 'TEXT NULL' }, // TEXT pour le résumé (summary)
 ];
+
 
 
 

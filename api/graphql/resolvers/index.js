@@ -1,4 +1,5 @@
 const UserResolver =require('./users/userResolver');
+const SessionResolver =require('./users/sessionResolver');
 const BeneficiaireResolver =require('./beneficiaires/beneficiaireResolver');
 const DonateurResolver =require('./donateurs/donateurResolver');
 const ProjetResolver =require('./projets/projetResolver');
@@ -8,7 +9,8 @@ const resolvers = merge({},
     UserResolver,
     BeneficiaireResolver,
     DonateurResolver,
-    ProjetResolver
+    ProjetResolver,
+    SessionResolver
 
 );
 module.exports = resolvers;

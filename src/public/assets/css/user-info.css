@@ -1,0 +1,68 @@
+.user-sidebar {
+   
+    background: linear-gradient(to bottom right, #f0ecf1, #f8f8f7);
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* overflow-y: auto; */
+    
+}
+
+.user-info {
+    
+    color: #333 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+}
+
+.user-info h5 {
+    font-size: 1.2rem !important;
+    font-weight: bold !important;
+    color: #541670 !important;
+    margin-right:10px !important;
+   
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    
+}
+
+.btn-profile,
+.btn-add-profile {
+    background-color: #541670 !important;
+    color: white !important;
+    border-radius: 5px !important;
+    padding: 10px 20px !important;
+    font-weight: bold !important;
+    transition:background-color 0.3s ease-in-out !important;
+}
+
+.btn-profile:hover,
+.btn-add-profile:hover {
+    background-color: #7611d4 !important;
+}
+
+
+/* Container des boutons avec marge pour les remonter */
+.user-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 50px; /* Ajustez cette valeur pour remonter les boutons */
+}
+
+/* Bouton de déconnexion en rouge */
+.btn-danger {
+    background-color: #dc3545 !important; /* Rouge Bootstrap */
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333 !important;
+}

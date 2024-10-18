@@ -2,12 +2,16 @@ const { gql } = require("graphql-tag");
 
 module.exports = gql`
   # Type pour un projet
+  scalar Upload
   type Projet {
     id: Int!
+    image:String
     titre: String!
     description: String!
-    domaine: DomaineEnum!
-    statut: StatutEnum!
+    objectif: Float!
+    resume: String!
+    domaine: String
+    statut: String!
     dateDebut: String
     dateFin: String
     isValid: Boolean!
@@ -40,17 +44,28 @@ module.exports = gql`
 
   # Input pour créer un projet
   input ProjetInput {
-    titre: String!
-    description: String!
-    domaine: DomaineEnum!
-  }
+  titre: String!
+  objectif: Float!  # Utilisation de Float pour un montant financier
+  resume: String!  # Correctement défini comme String pour un texte
+  description: String!
+  domaine: DomaineEnum!
+  dateDebut: String
+  dateFin: String
+}
+
 
   # Input pour mettre à jour un projet
   input ProjetUpdateInput {
+    image:Upload
     titre: String
+    objectif: Float!  
+    resume: String! 
     description: String
     domaine: DomaineEnum
     statut: StatutEnum
+    dateDebut: String
+    dateFin: String
+  
   }
 
   type Query {
@@ -59,7 +74,7 @@ module.exports = gql`
   }
 
   type Mutation {
-    createProjet(input: ProjetInput!): Projet
+    createProjet(image:Upload,input: ProjetInput!): Projet
     updateProjet(projetId: Int!, input: ProjetUpdateInput!): Projet
     startProjet(projetId: Int!, dateDebut: String!): Projet
     finishProjet(projetId: Int!, dateFin: String!): Projet

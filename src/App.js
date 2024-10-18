@@ -2,7 +2,8 @@ import React from 'react';
 import AppRoute from './app/routes/route';
 import { AppProvider } from './app/providers/AppProvider';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import ServerProvider from './lib/apollo-clinet';
 
 const App = () => {
   return (
@@ -14,13 +15,16 @@ const App = () => {
 };
 
 const AppWrapper = () => (
-  <AppProvider>
+  <ServerProvider>
+ <AppProvider>
     <Router>
       
         <App />
    
     </Router>
   </AppProvider>
+  </ServerProvider>
+ 
 );
 
 export default AppWrapper;

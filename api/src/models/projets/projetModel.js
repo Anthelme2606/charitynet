@@ -1,16 +1,28 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../../../config/database'); 
+
 class Projet extends Model {}
 
 Projet.init({
- 
   titre: {
     type: DataTypes.STRING,
+    allowNull: false,
+  },
+  resume: { 
+    type: DataTypes.TEXT, 
     allowNull: false,
   },
   description: {
     type: DataTypes.TEXT,
     allowNull: false,
+  },
+  objectif: { 
+    type: DataTypes.DECIMAL(10, 2), 
+    allowNull: false,
+  },
+  image: {
+    type: DataTypes.STRING,
+    allowNull: true,
   },
   domaine: {
     type: DataTypes.ENUM(
@@ -31,7 +43,7 @@ Projet.init({
   statut: {
     type: DataTypes.ENUM('Pending', 'InProgress', 'Completed'),
     allowNull: false,
-    defaultValue: 'Pending'
+    defaultValue: 'Pending',
   },
   dateDebut: {
     type: DataTypes.STRING,
@@ -43,7 +55,7 @@ Projet.init({
   },
   isValid: {
     type: DataTypes.BOOLEAN,
-    defaultValue:false,
+    defaultValue: false,
     allowNull: true,
   },
   beneficiaireId: {

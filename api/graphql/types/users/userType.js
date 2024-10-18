@@ -29,12 +29,14 @@ const userTypes = gql`
 
   type AuthData {
     token: String
+    lifeTime:String
     user: User
   }
 
   type Query {
     getUsers: [User]
     getUser(id: Int): User
+    currentUser:User
   }
 
   type Mutation {

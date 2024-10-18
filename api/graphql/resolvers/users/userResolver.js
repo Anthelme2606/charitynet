@@ -1,15 +1,27 @@
 const UserService = require("../../../src/services/users/userService");
 
 module.exports = {
+ 
   Query: {
    
     getUsers: async (_, args, { user }) => {
-      return await UserService.getAll();
+    
+      const users=await UserService.getAll();
+ 
+      return users;
     },
 
 
     getUser: async (_, { userId }, { user }) => { 
       return await UserService.getById(userId);     
+    },
+    currentUser: async (_, args, { user }) => { 
+      if (!user) {
+        throw new Error('Not authenticated');
+    }
+      const cuser= await UserService.currentUser(user.id);
+    
+      return cuser;    
     },
   },
 

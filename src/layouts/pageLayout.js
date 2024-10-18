@@ -9,7 +9,7 @@ const PageLayout = ({ pageTitle, children }) => {
 
   return (
     <>
-      <div className="w-100 m-0 p-0 global-container overflow-hidden">
+      <div className="w-100 m-0 p-0 global-container overflow-x-hidden">
        
         <Navbar />
       

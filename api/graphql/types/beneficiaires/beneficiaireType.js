@@ -11,6 +11,7 @@ type Beneficiaire {
   phoneNumber: String!
   legalStatus: String
   user: User!
+  myProjets:[Projet]
 }
 
 # Enum pour le type de bénéficiaire
@@ -44,6 +45,7 @@ input BeneficiaireUpdateInput {
   type Query {
     getBeneficiaires:[Beneficiaire]
     getBeneficiaire(id: Int): Beneficiaire
+    getCurrentBeneficiaire(id: Int): Beneficiaire
   }
 
   type Mutation {

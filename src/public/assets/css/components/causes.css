@@ -1,0 +1,85 @@
+.section-title {
+    color: var(--violet) !important;
+    font-weight: bold;
+    font-size: 2rem;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.card-cause {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    margin-bottom: 50px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-img-top {
+    height: 200px !important;
+    object-fit: cover !important;
+}
+
+/* .card-body {
+    padding: 30px;
+    background: linear-gradient(to bottom right, #f0ecf1, #f8f8f7);
+    flex-grow: 1;
+} */
+
+.card-title {
+    color: #541670 !important;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.card-text {
+    color: #333 !important;
+    margin-bottom: 15px !important;
+}
+
+.btn-donate,
+.btn-view {
+    border-radius: 15px !important;
+    padding: 10px 10px !important;
+    font-weight: bold !important;
+}
+
+.btn-donate {
+    background-color: var(--white)   !important;
+    color: var(--orange) !important;
+}
+
+.btn-donate:hover {
+    background-color: var(--orange) !important;
+}
+
+.btn-view {
+    background-color:var(--white)  !important;
+    color: #541670 !important;
+}
+
+.btn-view:hover {
+    background-color: #430d58;
+}
+
+.cause-progress {
+    height: 8px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.cause-progress-bar {
+    height: 8px;
+    border-radius: 5px;
+    background-color: #541670;
+}
+
+.progress-text {
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
