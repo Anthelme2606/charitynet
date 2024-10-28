@@ -1,0 +1,113 @@
+/* :root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --tertiary-color: #e74c3c;
+    --quaternary-color: #f39c12;
+    --background-color: #f5f5f5;
+    --text-color: #333;
+    --table-header-bg: #2980b9;
+    --table-row-hover: #f0f0f0;
+    --box-shadow-color: rgba(0, 0, 0, 0.1);
+} */
+
+
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px var(--box-shadow-color);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px var(--box-shadow-color);
+}
+
+table thead {
+    background-color: var(--table-header-bg);
+    color: white;
+}
+
+table thead th {
+    padding: 16px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    color:var(--white) !important;
+}
+
+table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+table tbody tr:hover {
+    background-color: var(--table-row-hover);
+}
+
+table tbody td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: none;
+}
+
+.see-details {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 12px;
+    background-color: var(--secondary-color);
+    border-radius: 20px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.see-details:hover {
+    background-color: var(--tertiary-color);
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    table thead {
+        display: none;
+    }
+
+    table tbody, table tr, table td {
+        display: block;
+        width: 100%;
+    }
+
+    table tr {
+        background-color: #fff;
+        margin-bottom: 15px;
+        padding: 12px;
+        box-shadow: 0 2px 8px var(--box-shadow-color);
+    }
+
+    table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: var(--text-color);
+    }
+}

@@ -17,6 +17,31 @@ const getStatutColor = (statut) => {
       return "";
   }
 };
+const getProjetsCompts = (type, data) => {
+  let count = 0;
+  let projets = data?.getCurrentBeneficiaire?.myProjets || [];
+
+  switch (type) {
+    case "Pending":
+      count = projets.filter(projet => projet.statut === "Pending").length;
+      break;
+
+    case "InProgress":
+      count = projets.filter(projet => projet.statut === "InProgress").length;
+      break;
+
+    case "Completed":
+      count = projets.filter(projet => projet.statut === "Completed").length;
+      break;
+
+    default:
+      count = 0;
+      break;
+  }
+
+  return count;
+};
+
 const getStatut = (statut) => {
   switch (statut) {
     case "Pending":
@@ -61,10 +86,10 @@ const ProjectTracking = () => {
   if (error) return <p>Error loading data: {error.message}</p>;
 
   const infoCards = [
-    { titre: "Projets actifs", valeur: data.getCurrentBeneficiaire.myProjets.length.toString() },
-    { titre: "Bénéficiaires", valeur: "1500+" }, 
-    { titre: "Fonds levés", valeur: "250K €" }, 
-    { titre: "Partenaires", valeur: "12" }, 
+    { titre: "Projets créés", valeur: data.getCurrentBeneficiaire.myProjets.length.toString() },
+    { titre: "projets accomplis", valeur: getProjetsCompts("Completed", data) }, 
+    { titre: "Projets en cours", valeur: getProjetsCompts("InProgress", data) }, 
+    { titre: "projets en attente", valeur: getProjetsCompts("Pending", data) }, 
   ];
 
   return (

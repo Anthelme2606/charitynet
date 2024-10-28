@@ -2,6 +2,7 @@ const ProjetRepository=require('../../repositories/projets/projetRepository');
 const UserRepository=require('../../repositories/users/userRepository');
 const BeneficiaireRepository=require('../../repositories/beneficiaires/beneficiaireRepository');
 const saveFile=require('../../../utils/saveFile');
+const TrackingProjectRepository = require("../../repositories/projets/trackingRepository");
 class ProjetService {
     static async createProjet(data, auth) {
         const bene = await this.getByUser(auth.id);
@@ -23,7 +24,9 @@ class ProjetService {
     
         // Créer le projet
         data.domaine=await this.normalizeString(data.domaine);
-        return await ProjetRepository.createProjet(data, auth);
+        const newProject=await ProjetRepository.createProjet(data, auth);
+        await TrackingProjectRepository.createOperation(auth.id);
+        return newProject;
     }
     
     static async validProjet(id,auth){

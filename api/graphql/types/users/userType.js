@@ -8,6 +8,7 @@ const userTypes = gql`
     country: String
     userType: String
     referenceNumber:String
+    createdAt:String
     member:Beneficiaire
   }
   enum Member{
@@ -32,11 +33,28 @@ const userTypes = gql`
     lifeTime:String
     user: User
   }
+  type DashBoardStat {
+    totalUsers: Int
+    allDonors: Int
+    allBeneficiaries: Int
+    statUserMonth: Float
+    statDonor: Float
+    statBeneficiary: Float
+}
+type AdminStat {
+        donorPercentage: Float
+        beneficiaryPercentage:Float
+        obnlPercentage:Float
+        monthlyProjectPercentage: Float
+}
 
   type Query {
     getUsers: [User]
     getUser(id: Int): User
     currentUser:User
+    getUsersToDashboard:DashBoardStat 
+    getAdminStat:AdminStat
+    getNonValidUsers:[User]
   }
 
   type Mutation {

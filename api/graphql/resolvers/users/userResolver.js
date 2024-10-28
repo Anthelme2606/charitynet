@@ -10,6 +10,23 @@ module.exports = {
  
       return users;
     },
+    getUsersToDashboard:async(_,agrs,{user})=>{
+      return await UserService.getUsersToDashboard();
+    },
+    getAdminStat:async(_,args,{user})=>{
+      try{
+        return await UserService.getAdminStat();
+      }catch(error){
+        throw error;
+      }
+    },
+    getNonValidUsers:async(_,args,{user})=>{
+      try{
+        return await UserService.getNonValidUsers();
+      }catch(error){
+        throw error;
+      }
+    },
 
 
     getUser: async (_, { userId }, { user }) => { 

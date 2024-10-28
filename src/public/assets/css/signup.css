@@ -1,0 +1,109 @@
+
+
+.container-fluid {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.flag-image {
+  
+    height: 20px !important; 
+    object-fit: cover !important; 
+    border-radius: 4px !important; 
+    margin-right: 5px !important; 
+}
+
+
+.signup-card {
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(to bottom right, #f0ecf1, #f8f8f7);
+    padding: 2rem;
+    max-width: 750px;
+    margin: auto;
+}
+
+.signup-logo {
+    width: 8%;
+    margin-bottom: 1rem;
+    border-radius: 55%;
+}
+
+
+.rounded-input {
+    border-radius: 30px !important;
+    padding: 12px 20px !important;
+    font-size: 1rem !important;
+    border: 1px solid #ccc !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease-in-out !important;
+    background-color: #f9f9f9!important ;
+}
+
+.rounded-input:focus {
+    border-color: #f8a708 !important;
+    box-shadow: 0 4px 10px rgba(248, 167, 8, 0.2) !important;
+    background-color: #fff !important;
+    outline: none !important;
+}
+
+.rounded-input:hover {
+    border-color: #541670 !important;
+}
+
+input::placeholder {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+
+.btn-warning {
+    background-color: #f8a708 !important;
+    border: none !important;
+    border-radius: 30px !important;
+    padding: 10px 25px !important;
+    font-size: 1rem !important;
+    color: white !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    transition: background-color 0.3s ease-in-out !important;
+}
+
+.btn-warning:hover {
+    background-color: #e6a800;
+}
+
+.btn-outline-warning {
+    border-color: #541670;
+    color: #541670;
+    border-radius: 30px;
+    padding: 10px 25px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-outline-warning:hover {
+    background-color: #541670;
+    color: white;
+}
+
+
+.image-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    height: 100% !important ;
+}
+
+.image-container img {
+    width: 85% !important; 
+    max-width: 500px !important; 
+    height: auto !important;
+    margin-right: -30px !important; 
+}
+
+
+@media (max-width: 768px) {
+    .image-container {
+        display: none;
+    }
+} 

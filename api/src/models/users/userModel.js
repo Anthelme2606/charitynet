@@ -31,8 +31,13 @@ User.init({
     type: DataTypes.STRING,
     allowNull: false,
   },
+  isValid: {
+    type: DataTypes.BOOLEAN,
+    allowNull: false,
+    defaultValue: false, 
+  },
   userType: {
-    type: DataTypes.ENUM('Admin', 'Beneficiary', 'Donor', 'User'), 
+    type: DataTypes.ENUM('Admin', 'Beneficiary', 'Donor', 'User','OBNL'), 
     allowNull: false,
     defaultValue: 'User', 
   },

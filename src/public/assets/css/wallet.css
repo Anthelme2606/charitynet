@@ -16,11 +16,11 @@
   
   .total-collecte {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 0 !important;
+    right: 20px !important;
     width: 100px;
     height: 100px;
-    background-color: #3498db;
+    background-color: var(--primary-color) !important;
     color: white;
     border-radius: 50%;
     display: flex;
@@ -69,9 +69,9 @@
     border-bottom: 1px solid #ddd;
   }
   
-  img {
+  /* img {
     border-radius: 50%;
-  }
+  } */
   
   .progress-container {
     display: flex;
@@ -107,4 +107,51 @@
     background-color: #f1f1f1;
     transition: background-color 0.3s;
   }
-  
+  .wallet-card {
+    display: none; /* Masque par défaut sur les grands écrans */
+  }
+@media (max-width: 768px) {
+  .margin-top{
+    margin-top:150px !important;
+  }
+  .table-container {
+    display: none;
+  }
+
+  .wallet-card {
+    display: block;
+    margin: 10px;
+    padding: 20px;
+    border: none;
+    border-bottom: 2px solid #e9d9d9;
+    border-radius: 10px;
+    background-color: var(--sidebar) !important;
+  }
+
+  .wallet-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  .wallet-card h2 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+
+  .wallet-card p {
+    font-size: 1rem;
+    margin: 5px 0;
+  }
+
+  .progress-container {
+    margin-top: 10px;
+  }
+}
+
+/* For larger screens, hide the wallet card */
+@media (min-width: 769px) {
+  .wallet-card {
+    display: none;
+  }
+}

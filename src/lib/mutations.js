@@ -39,3 +39,32 @@ mutation CreateProjet($input: ProjetInput!, $image: Upload) {
   }
 }
 `;
+export const VALID_PROJECT=gql`
+mutation ValidProjet($projetId: Int!) {
+  validProjet(projetId: $projetId) {
+    isValid
+    id
+    createdAt
+    statut
+    objectif
+    titre
+  }
+}
+`;
+export const SIGN_UP=gql`
+mutation Signup($input: UserInput) {
+  signup(input: $input) {
+    email
+    country
+    username
+  }
+}
+
+`;
+export const SEND_MAIL=gql`
+mutation SendMail($receiver: String, $subject: String, $input: MailerInput) {
+  sendMail(receiver: $receiver, subject: $subject, input: $input) {
+    message
+  }
+}
+`;

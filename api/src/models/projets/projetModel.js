@@ -24,6 +24,10 @@ Projet.init({
     type: DataTypes.STRING,
     allowNull: true,
   },
+  collectes: {
+    type: DataTypes.DECIMAL(10, 2),
+    allowNull: true,
+  },
   domaine: {
     type: DataTypes.ENUM(
       'Education',

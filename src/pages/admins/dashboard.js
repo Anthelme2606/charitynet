@@ -1,211 +1,266 @@
 import React from "react";
-import "../../public/assets/css/dashboard.css";
-
+import "../../public/assets/css/admindashboard.css";
+import Table from "../../components/Table";
+import Loader from "../../components/Loader";
+import { useQuery } from "@apollo/client";
+import { GET_ME_BENEFICIAIRE } from "../../lib/queries";
+import {GET_TRACKING_PROJECTS} from "../../lib/queries";
+import {GET_BENEFICIAIRE_AND_TRACKING_PROJECTS} from "../../lib/queries";
 import DashboardLayout from "../../layouts/dashboardLayout";
-import useDashboard from "../../hooks/dashboardHook";
+import AdminStat from "../../components/admin-stat";
+import DashboardTable from "../../components/dashboardTable";
+import AdminProjectsTable from "../../components/adminProjectsTable";
+import WaveCard from "../../components/wave-card";
+import UsersCard from "../../components/users-card";
+
 const AdminDashboard = () => {
-  const {
-    sidebarRef,
-    sidebarToggleRef,
-    isSmallScreen,
-    closeToggler,
-    isClosed,
-  } = useDashboard(); 
+  const getNonValidProjects=(projects)=> {
+    return projects.filter(project => project.isValid === false);
+  }
+  
+  const { loading, error, data } = useQuery(GET_TRACKING_PROJECTS, {
+    fetchPolicy: "network-only",
+  });
+
+  if (loading) return <Loader />;
+  if (error) return <p>Error loading data: {error.message}</p>;
+
+  const dashboardStat = data?.getUsersToDashboard || {};
+
+  // Extraction des valeurs avec des valeurs par défaut en cas d'absence
+  const totalUsers = dashboardStat.totalUsers || 0;
+  const allDonors = dashboardStat.allDonors || 0;
+  const allBeneficiaries = dashboardStat.allBeneficiaries || 0;
+  const statUserMonth = dashboardStat.statUserMonth || 0;
+  const statDonor = dashboardStat.statDonor || 0;
+  const statBeneficiary = dashboardStat.statBeneficiary || 0;
+  
+  const tracking_ps = data?.getTrackingProjects?.trackingProjects || [];
+  const totalCreate = data?.getTrackingProjects?.totalCreate || 0;
+  const totalDelete = data?.getTrackingProjects?.totalDelete || 0;
+  const totalUpdate = data?.getTrackingProjects?.totalUpdate || 0;
+  const project_ps=data?.getProjets || [];
+  const nonValidProjects = getNonValidProjects(project_ps);
+ 
+
 
   return (
-    <DashboardLayout
-      sidebarRef={sidebarRef}
-      sidebarToggleRef={sidebarToggleRef}
-      isSmallScreen={isSmallScreen}
-      closeToggler={closeToggler}
-      isClosed={isClosed}
-    > 
-      {/* {" "}
-      <div className="row row-cols-1 row-cols-md-5 g-1 g-md-2 mt-1 mt-md-0">
-        <div className="col">
-          <DashboardCard numberValue="45" badge="vert" />
-        </div>
-        <div className="col">
-          <div className="card h-100">
-          
-            <DashboardCard numberValue="45" badge="orange" />
+    <DashboardLayout>
+      <div className="w-100 dashboard-container m-0 p-0">
+        <div className="row g-1">
+          {/* Left Column (Notifications Card) */}
+          <div className="col-md-5 h-100">
+            <div className="row row-cols-1 row-cols-md-1 g-2">
+              <div className="col">
+                <div className="card  bg-white">
+                  <div className="  position-relative">
+                    <div className="notify-me">
+                      <span className="bi bi-bell d-icon"></span>
+                      <span className="notify-number px-2">
+                        {totalCreate+totalUpdate+totalDelete}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="card-body bg-white ">
+                    <div className="notify-line">
+                      <span className="insert text-success bi bi-plus-circle"></span>
+                      <span className="number">{totalCreate}</span>
+                      <span className="text">Insertions effectuées</span>
+                      <span className="look px-2 bi bi-eye-fill"></span>
+                    </div>
+                    <div className="notify-line">
+                      <span className="upd text-primary bi bi-pencil"></span>
+                      <span className="number">{totalUpdate}</span>
+                      <span className="text">Mises à jour effectuées</span>
+                      <span className="look px-2 bi bi-eye-fill"></span>
+                    </div>
+                    <div className="notify-line">
+                      <span className="del text-danger bi bi-trash"></span>
+                      <span className="number">
+                        {totalDelete}
+                      </span>
+                      <span className="text">Suppressions effectuées</span>
+                      <span className="look px-2 bi bi-eye-fill"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="col">
+                <AdminStat />
+              </div>
+              <div className="col">
+                <WaveCard/>
+              </div>
+              <div className="col">
+                <UsersCard/>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column (Main Dashboard Info) */}
+          <div className="col-md-7">
+            <div className="row row-cols-1 row-cols-md-2 g-1">
+              <div className="col">
+                <div className="card h-100 text-center">
+                  <div className="card-body bg-white">
+                    <div className="d-flex justify-content-between">
+                      <i className="bi bi-people mb-3 d-icon text-primary"></i>
+                      <h5 className="card-title">Utilisateurs</h5>
+                    </div>
+                    <p className="card-text">
+                      {totalUsers}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      {statUserMonth}% par rapport au mois dernier
+                    </p>
+                  </div>
+                  <div className="card-footer bg-white p-0">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 1440 320"
+                      className="w-100"
+                      style={{ display: "block" }}
+                    >
+                      <path
+                        fill="blueviolet"
+                        fillOpacity="1"
+                        d="M0,64L11.4,69.3C22.9,75,46,85,69,106.7C91.4,128,114,160,137,181.3C160,203,183,213,206,192C228.6,171,251,117,274,112C297.1,107,320,149,343,186.7C365.7,224,389,256,411,229.3C434.3,203,457,117,480,80C502.9,43,526,53,549,64C571.4,75,594,85,617,112C640,139,663,181,686,213.3C708.6,245,731,267,754,266.7C777.1,267,800,245,823,224C845.7,203,869,181,891,176C914.3,171,937,181,960,202.7C982.9,224,1006,256,1029,234.7C1051.4,213,1074,139,1097,96C1120,53,1143,43,1166,80C1188.6,117,1211,203,1234,245.3C1257.1,288,1280,288,1303,256C1325.7,224,1349,160,1371,154.7C1394.3,149,1417,203,1429,229.3L1440,256L1440,320L1428.6,320C1417.1,320,1394,320,1371,320C1348.6,320,1326,320,1303,320C1280,320,1257,320,1234,320C1211.4,320,1189,320,1166,320C1142.9,320,1120,320,1097,320C1074.3,320,1051,320,1029,320C1005.7,320,983,320,960,320C937.1,320,914,320,891,320C868.6,320,846,320,823,320C800,320,777,320,754,320C731.4,320,709,320,686,320C662.9,320,640,320,617,320C594.3,320,571,320,549,320C525.7,320,503,320,480,320C457.1,320,434,320,411,320C388.6,320,366,320,343,320C320,320,297,320,274,320C251.4,320,229,320,206,320C182.9,320,160,320,137,320C114.3,320,91,320,69,320C45.7,320,23,320,11,320L0,320Z"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col">
+                <div className="card h-100  text-center ">
+                  <div className="card-body bg-white ">
+                    <div className="d-flex justify-content-between">
+                      <i className="bi bi-person-check mb-3 d-icon text-success"></i>
+                      <h5 className="card-title">Bénéficiaires</h5>
+                    </div>
+                    <p className="card-text">
+                      {allBeneficiaries}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      +{statBeneficiary}% par rapport au mois dernier
+                    </p>
+                  </div>
+                  <div className="card-footer bg-white p-0">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 1440 320"
+                      className="w-100"
+                      style={{ display: "block" }}
+                    >
+                      <path
+                        fill="blueviolet"
+                        fillOpacity="1"
+                        d="M0,64L11.4,69.3C22.9,75,46,85,69,106.7C91.4,128,114,160,137,181.3C160,203,183,213,206,192C228.6,171,251,117,274,112C297.1,107,320,149,343,186.7C365.7,224,389,256,411,229.3C434.3,203,457,117,480,80C502.9,43,526,53,549,64C571.4,75,594,85,617,112C640,139,663,181,686,213.3C708.6,245,731,267,754,266.7C777.1,267,800,245,823,224C845.7,203,869,181,891,176C914.3,171,937,181,960,202.7C982.9,224,1006,256,1029,234.7C1051.4,213,1074,139,1097,96C1120,53,1143,43,1166,80C1188.6,117,1211,203,1234,245.3C1257.1,288,1280,288,1303,256C1325.7,224,1349,160,1371,154.7C1394.3,149,1417,203,1429,229.3L1440,256L1440,320L1428.6,320C1417.1,320,1394,320,1371,320C1348.6,320,1326,320,1303,320C1280,320,1257,320,1234,320C1211.4,320,1189,320,1166,320C1142.9,320,1120,320,1097,320C1074.3,320,1051,320,1029,320C1005.7,320,983,320,960,320C937.1,320,914,320,891,320C868.6,320,846,320,823,320C800,320,777,320,754,320C731.4,320,709,320,686,320C662.9,320,640,320,617,320C594.3,320,571,320,549,320C525.7,320,503,320,480,320C457.1,320,434,320,411,320C388.6,320,366,320,343,320C320,320,297,320,274,320C251.4,320,229,320,206,320C182.9,320,160,320,137,320C114.3,320,91,320,69,320C45.7,320,23,320,11,320L0,320Z"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col">
+                <div className="card h-100  text-center ">
+                  <div className="card-body bg-white ">
+                    <div className="d-flex justify-content-between">
+                      <i className="bi bi-heart mb-3 d-icon text-danger"></i>
+                      <h5 className="card-title">Donateurs</h5>
+                    </div>
+                    <p className="card-text">
+                      {allDonors}
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      +{statDonor}% par rapport au mois dernier
+                    </p>
+                  </div>
+                  <div className="card-footer bg-white p-0">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 1440 320"
+                      className="w-100"
+                      style={{ display: "block" }}
+                    >
+                      <path
+                        fill="blueviolet"
+                        fillOpacity="1"
+                        d="M0,64L11.4,69.3C22.9,75,46,85,69,106.7C91.4,128,114,160,137,181.3C160,203,183,213,206,192C228.6,171,251,117,274,112C297.1,107,320,149,343,186.7C365.7,224,389,256,411,229.3C434.3,203,457,117,480,80C502.9,43,526,53,549,64C571.4,75,594,85,617,112C640,139,663,181,686,213.3C708.6,245,731,267,754,266.7C777.1,267,800,245,823,224C845.7,203,869,181,891,176C914.3,171,937,181,960,202.7C982.9,224,1006,256,1029,234.7C1051.4,213,1074,139,1097,96C1120,53,1143,43,1166,80C1188.6,117,1211,203,1234,245.3C1257.1,288,1280,288,1303,256C1325.7,224,1349,160,1371,154.7C1394.3,149,1417,203,1429,229.3L1440,256L1440,320L1428.6,320C1417.1,320,1394,320,1371,320C1348.6,320,1326,320,1303,320C1280,320,1257,320,1234,320C1211.4,320,1189,320,1166,320C1142.9,320,1120,320,1097,320C1074.3,320,1051,320,1029,320C1005.7,320,983,320,960,320C937.1,320,914,320,891,320C868.6,320,846,320,823,320C800,320,777,320,754,320C731.4,320,709,320,686,320C662.9,320,640,320,617,320C594.3,320,571,320,549,320C525.7,320,503,320,480,320C457.1,320,434,320,411,320C388.6,320,366,320,343,320C320,320,297,320,274,320C251.4,320,229,320,206,320C182.9,320,160,320,137,320C114.3,320,91,320,69,320C45.7,320,23,320,11,320L0,320Z"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col">
+                <div className="card h-100  text-center ">
+                  <div className="card-body bg-white ">
+                    <div className="d-flex justify-content-between">
+                      <i className="bi bi-cash-stack mb-3 d-icon text-warning"></i>
+                      <h5 className="card-title">Total des dons</h5>
+                    </div>
+                    <p className="card-text">€ 25,000</p>
+                    <p className="text-sm text-muted-foreground">
+                      +15% par rapport au mois dernier
+                    </p>
+                  </div>
+                  <div className="card-footer bg-white p-0">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 1440 320"
+                      className="w-100"
+                      style={{ display: "block" }}
+                    >
+                      <path
+                        fill="blueviolet"
+                        fillOpacity="1"
+                        d="M0,64L11.4,69.3C22.9,75,46,85,69,106.7C91.4,128,114,160,137,181.3C160,203,183,213,206,192C228.6,171,251,117,274,112C297.1,107,320,149,343,186.7C365.7,224,389,256,411,229.3C434.3,203,457,117,480,80C502.9,43,526,53,549,64C571.4,75,594,85,617,112C640,139,663,181,686,213.3C708.6,245,731,267,754,266.7C777.1,267,800,245,823,224C845.7,203,869,181,891,176C914.3,171,937,181,960,202.7C982.9,224,1006,256,1029,234.7C1051.4,213,1074,139,1097,96C1120,53,1143,43,1166,80C1188.6,117,1211,203,1234,245.3C1257.1,288,1280,288,1303,256C1325.7,224,1349,160,1371,154.7C1394.3,149,1417,203,1429,229.3L1440,256L1440,320L1428.6,320C1417.1,320,1394,320,1371,320C1348.6,320,1326,320,1303,320C1280,320,1257,320,1234,320C1211.4,320,1189,320,1166,320C1142.9,320,1120,320,1097,320C1074.3,320,1051,320,1029,320C1005.7,320,983,320,960,320C937.1,320,914,320,891,320C868.6,320,846,320,823,320C800,320,777,320,754,320C731.4,320,709,320,686,320C662.9,320,640,320,617,320C594.3,320,571,320,549,320C525.7,320,503,320,480,320C457.1,320,434,320,411,320C388.6,320,366,320,343,320C320,320,297,320,274,320C251.4,320,229,320,206,320C182.9,320,160,320,137,320C114.3,320,91,320,69,320C45.7,320,23,320,11,320L0,320Z"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Query Buttons */}
+            <div className="w-100 mt-4">
+              <AdminProjectsTable projects={nonValidProjects} />
+              {/* <div className="row row-cols-2 row-cols-md-4 g-3">
+              <div className="col h-100">
+                <button className="quick-query-btn w-100">
+                  <i className="bi bi-filter"></i>
+                  Nombre de comptes créés aujourd'hui
+                </button>
+              </div>
+
+              <div className="col h-100">
+                <button className="quick-query-btn w-100">
+                  <i className="bi bi-filter"></i>
+                  Nombre de donateurs inscrits aujourd'hui
+                </button>
+              </div>
+
+              <div className="col h-100">
+                <button className="quick-query-btn w-100">
+                  <i className="bi bi-filter"></i>
+                  Nombre de bénéficiaires inscrits aujourd'hui
+                </button>
+              </div>
+
+              <div className="col h-100">
+                <button className="quick-query-btn w-100">
+                  <i className="bi bi-filter"></i>
+                  Nombre de dons effectués aujourd'hui
+                </button>
+              </div>
+            </div> */}
+            </div>
           </div>
         </div>
-        <div className="col">
-          <DashboardCard numberValue="45" badge="bleu" />
-        </div>
-        <div className="col">
-          <DashboardCard numberValue="45" badge="rouge-clair" />
-        </div>
-        <div className="col">
-          <DashboardCard numberValue="45" badge="rouge" />
-        </div>
+        {/* <Table projects={projects} /> */}
       </div>
-      <div className="row row-cols-1 row-cols-md-3 g-1 g-md-2 mt-1 mt-md-2">
-        <div className="col">
-          <div className="card h-100 position-relative overflow-hidden">
-            <div className="card-body d-flex flex-column ">
-              <div className="d-flex justify-content-between">
-                <div
-                  className=""
-                  style={{
-                    width: "60px",
-                    height: "60px",
-                    borderRadius: "50%",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    backgroundColor: "#f4f3f3",
-                  }}
-                >
-                  <img
-                    src={logo}
-                    className="img-fluid"
-                    style={{
-                      width: "45px",
-                      height: "45px",
-                      borderRadius: "50%",
-                    }}
-                  />
-                </div>
-                <div>
-                  <span className="fs-12">Kossi Kwatcha</span>
-                </div>
-              </div>
-
-              <strong
-                className="text-center fs-16 mt-2 mentor-month gradient-text"
-                style={{
-                  color: "black",
-                  padding: "4px 8px",
-                  borderRadius: "5px",
-                }}
-              >
-                Meilleur mentor du mois
-              </strong>
-            </div>
-
-            <div className="position-absolute bottom-0 start-0 w-100">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path
-                  fill="#7B61FF"
-                  fillOpacity="1"
-                  d="M0,256L9.2,229.3C18.5,203,37,149,55,122.7C73.8,96,92,96,111,90.7C129.2,85,148,75,166,101.3C184.6,128,203,192,222,202.7C240,213,258,171,277,138.7C295.4,107,314,85,332,85.3C350.8,85,369,107,388,128C406.2,149,425,171,443,197.3C461.5,224,480,256,498,272C516.9,288,535,288,554,277.3C572.3,267,591,245,609,234.7C627.7,224,646,224,665,234.7C683.1,245,702,267,720,256C738.5,245,757,203,775,202.7C793.8,203,812,245,831,240C849.2,235,868,181,886,133.3C904.6,85,923,43,942,32C960,21,978,43,997,90.7C1015.4,139,1034,213,1052,208C1070.8,203,1089,117,1108,101.3C1126.2,85,1145,139,1163,181.3C1181.5,224,1200,256,1218,272C1236.9,288,1255,288,1274,282.7C1292.3,277,1311,267,1329,272C1347.7,277,1366,299,1385,298.7C1403.1,299,1422,277,1431,266.7L1440,256L1440,320L1430.8,320C1421.5,320,1403,320,1385,320C1366.2,320,1348,320,1329,320C1310.8,320,1292,320,1274,320C1255.4,320,1237,320,1218,320C1200,320,1182,320,1163,320C1144.6,320,1126,320,1108,320C1089.2,320,1071,320,1052,320C1033.8,320,1015,320,997,320C978.5,320,960,320,942,320C923.1,320,905,320,886,320C867.7,320,849,320,831,320C812.3,320,794,320,775,320C756.9,320,738,320,720,320C701.5,320,683,320,665,320C646.2,320,628,320,609,320C590.8,320,572,320,554,320C535.4,320,517,320,498,320C480,320,462,320,443,320C424.6,320,406,320,388,320C369.2,320,351,320,332,320C313.8,320,295,320,277,320C258.5,320,240,320,222,320C203.1,320,185,320,166,320C147.7,320,129,320,111,320C92.3,320,74,320,55,320C36.9,320,18,320,9,320L0,320Z"
-                ></path>
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <div className="col">
-          <div className="card h-100">
-            <div className="card-body d-flex flex-column">
-              <div className="d-flex justify-content-between">
-                <span className="fs-16 fw-b">450</span>
-                <span>
-                  <i className="bi bi-arrow-up-right green"></i>
-                </span>
-              </div>
-
-              <span className="text-center fs-12">
-                {" "}
-                utilisateurs sur la plateforme
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card h-100 mentorat">
-            <div className="card-body d-flex flex-column">
-              <div className="d-flex justify-content-between">
-                <div className="mentorat-ticket">
-                  <span className="fs-12">450</span>
-                </div>
-                <span className="text-center fs-12">Mentorats</span>
-                <span>
-                  <i className="bi bi-book green fs-2"></i>
-                </span>
-              </div>
-              <div className="d-flex justify-content-between">
-                <span className="fs-12">
-                  <i className="bi bi-check-circle-fill finish fs-16"></i>
-                  310 terminés
-                </span>
-                <span className="fs-12">
-                  <i className="bi bi-clock-fill comming fs-16"></i>
-                  110 à venir
-                </span>
-                <span className="fs-12">
-                  <i className="bi bi-slash-circle-fill block fs-16"></i>
-                  30 bloqués
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="row row-cols-1 row-cols-md-2 g-1 g-md-2 mt-1 mt-md-2">
-        <div className="col">
-          <div className="card h-100">
-            <div className="card-body text-center flex-column">
-              <div className="fs-16 mb-2 d-flex justify-content-center align-items-center">
-                <span className="fs-16 text-center mb-2">
-                  Nombre d'inscription quotidien.
-                </span>
-              </div>
-              <div className="d-flex justify-content-between align-items-center">
-                <div className="fs-8 ">100 Utlrs</div>
-                <div className="fs-8"> 200 Utlrs</div>
-                <div className="fs-8">300 Utlrs</div>
-                <div className="fs-8">400 Utlrs</div>
-                <div className="fs-8">50 Utlrs</div>
-                <div className="fs-8 text-center">60 Utlrs</div>
-                <div className="fs-8">20 Utlrs</div>
-              </div>
-              <div className="d-flex justify-content-between">
-                <div className="banderole lun">
-                  <div className="inner-stat "></div>
-                </div>
-                <div className="banderole mar">
-                  <div className="inner-stat "></div>
-                </div>
-                <div className="banderole mer">
-                  <div className="inner-stat "></div>
-                </div>
-                <div className="banderole jeu">
-                  <div className="inner-stat  "></div>
-                </div>
-                <div className="banderole ven">
-                  <div className="inner-stat "></div>
-                </div>
-                <div className="banderole sam">
-                  <div className="inner-stat "></div>
-                </div>
-                <div className="banderole dim">
-                  <div className="inner-stat "></div>
-                </div>
-              </div>
-              <div className="d-flex justify-content-between">
-                <div className="fs-8">Lun</div>
-                <div className="fs-8">Mar</div>
-                <div className="fs-8">Mer</div>
-                <div className="fs-8">Jeu</div>
-                <div className="fs-8">Ven</div>
-                <div className="fs-8">Sam</div>
-                <div className="fs-8">Dim</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="card h-100">
-            <div className="card-body">
-              <Calendar />
-            </div>
-          </div>
-        </div>
-      </div>
-      <Diffusion /> */}
     </DashboardLayout>
   );
 };

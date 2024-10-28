@@ -10,12 +10,13 @@ const SidebarLinks = () => {
     switch (user?.auth?.userType) {
         case 'Admin':
             links.push(
-                { name: 'Tableau de bord', link: '/admin/dashboard' },
-                { name: 'Gérer les utilisateurs', link: '/admin/users' },
-                { name: 'Gestion des dons', link: '/admin/donations' },
+                { name: 'Tableau de bord', link: ROUTES.DASHBOARD },
+                { name: 'Gérer les utilisateurs',link:ROUTES.USERMANAGER  },
+                { name: 'Gestion des dons', link:ROUTES.DONMANAGER },
                 { name: 'Rapports', link: '/admin/reports' },
                 { name: 'Paramètres', link: '/admin/settings' },
-                { name: 'Aide', link: '/admin/help' }
+                { name: 'Aide', link: '/admin/help' },
+                { name: 'Déconnexion', link: '/logout' }
             );
             break;
     
@@ -27,7 +28,7 @@ const SidebarLinks = () => {
                 { name: 'Profil', link: '/donor/profile' },
                 { name: 'Notifications', link: '/donor/notifications' },
                 { name: 'Aide', link: '/donor/help' },
-                { name: 'À propos', link: '/donor/about' }
+                { name: 'À propos', link: ROUTES.ABOUT }
             );
             break;
     
@@ -36,11 +37,12 @@ const SidebarLinks = () => {
                 { name: 'Tableau de bord', link: ROUTES.DASHBOARD},
                 { name: 'Demander de l\'aide', link: ROUTES.CAUSECREATE},
                 { name: 'Suivi des demandes', link: ROUTES.TRACK},
+                { name: 'Gérer mes dons', link: ROUTES.GESTION },
                 { name: 'Mon portefeuille', link: ROUTES.WALLET},
                 { name: 'Profil', link: '/beneficiary/profile' },
                 { name: 'Notifications', link: '/beneficiary/notifications' },
                 { name: 'Aide', link: '/beneficiary/help' },
-                { name: 'À propos', link: '/beneficiary/about' }
+                { name: 'À propos', link: ROUTES.ABOUT }
             );
             break;
     
@@ -52,7 +54,7 @@ const SidebarLinks = () => {
                 { name: 'Profil', link: '/obnl/profile' },
                 { name: 'Rapports', link: '/obnl/reports' },
                 { name: 'Aide', link: '/obnl/help' },
-                { name: 'À propos', link: '/obnl/about' }
+                { name: 'À propos', link:ROUTES.ABOUT }
             );
             break;
     
@@ -61,16 +63,17 @@ const SidebarLinks = () => {
                 { name: 'Tableau de bord', link: '/dashboard' },
                 { name: 'Explorer les causes', link: '/causes' },
                 { name: 'Mon profil', link: '/profile' },
-                { name: 'Aide', link: '/help' },
+                
                 { name: 'Notifications', link: '/notifications' },
-                { name: 'À propos', link: '/about' }
+                { name: 'Aide', link: '/help' },
+                { name: 'À propos', link:ROUTES.ABOUT }
             );
             break;
     
         default:
             links.push(
                 { name: 'Page d\'accueil', link: '/' },
-                { name: 'À propos', link: '/about' },
+                { name: 'À propos', link:ROUTES.ABOUT },
                 { name: 'Contact', link: '/contact' },
                 { name: 'Aide', link: '/help' },
                 { name: 'Inscription', link: '/register' },

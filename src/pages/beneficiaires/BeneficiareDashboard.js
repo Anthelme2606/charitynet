@@ -20,52 +20,56 @@ const BeneficiaireDashboard = () => {
             <div className="col-md-9 h-100">
               <div className="row row-cols-1 row-cols-md-4 g-2">
               <div className="col">
-              <div className="card outline h-100">
-                <div className="card-body">
-                  <div className="d-flex justify-content-between">
-                    <span>Projets contribués</span>
+              <div className="card  h-100 bg-black text-white">
+                <div className="card-body bg-black text-white position-relative">
+                  <div className=" position-absolute top-right">
+                   
                     <span className="bi bi-people icon"></span>
                   </div>
-                  <div className="text-center">
+                  <div className=" d-flex justify-content-between mt-4">
+                  <span>Projets contribués</span>
                     <span>45</span>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col">
-              <div className="card outline h-100">
-                <div className="card-body">
-                  <div className="d-flex justify-content-between">
-                    <span>Causes partagées</span>
+              <div className="card  h-100 bg-black text-white">
+                <div className="card-body bg-black text-white position-relative">
+                  <div className=" position-absolute top-right">
+                   
                     <span className="bi bi-share icon"></span>
                   </div>
-                  <div className="text-center">
+                  <div className=" d-flex justify-content-between mt-4">
+                  <span>Causes partagées</span>
                     <span>45</span>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col">
-              <div className="card outline h-100">
-                <div className="card-body">
-                  <div className="d-flex justify-content-between">
-                    <span>Dons éffectués</span>
+              <div className="card  h-100 bg-black text-white">
+                <div className="card-body bg-black text-white position-relative">
+                  <div className=" position-absolute top-right">
+                    
                     <span className="bi bi-cash icon"></span>
                   </div>
-                  <div className="text-center">
+                  <div className=" d-flex justify-content-between mt-4">
+                  <span>Dons éffectués</span>
                     <span>45</span>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col">
-              <div className="card outline h-100">
-                <div className="card-body">
-                  <div className="d-flex justify-content-between">
-                    <span> projets</span>
+              <div className="card  h-100 bg-black text-white">
+                <div className="card-body bg-black text-white position-relative">
+                  <div className=" position-absolute top-right">
+                   
                     <span className="bi bi-briefcase icon"></span>
                   </div>
-                  <div className="text-center">
+                  <div className=" d-flex justify-content-between mt-4">
+                  <span> projets</span>
                     <span>45</span>
                   </div>
                 </div>

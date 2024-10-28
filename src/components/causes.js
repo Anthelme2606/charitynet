@@ -40,8 +40,8 @@ const Causes = () => {
       <div className="row mt-4">
         {causesData.map((cause) => (
           <div className="col-md-6 mb-4" key={cause.id}>
-            <div className="card card-cause">
-              <img src={cause.image} className="card-img-top" alt={`Cause Image ${cause.id}`} />
+            <div className="card h-100">
+              <img src={cause.image} className="img-fluid" alt="Cause" />
               <div className="card-body d-flex flex-column">
                 <h5 className="card-title">{cause.title}</h5>
                 <p className="card-text">{cause.description}</p>

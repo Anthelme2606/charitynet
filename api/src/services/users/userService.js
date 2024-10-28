@@ -1,7 +1,7 @@
 const UserRepository = require('../../repositories/users/userRepository');
 const SessionRepository = require('../../repositories/users/sessionRepository');
 const BeneficiaireReposistory = require('../../repositories/beneficiaires/beneficiaireRepository');
-
+const ProjetRepository=require('../../repositories/projets/projetRepository');
 class UserService{
     static async createAccount(data){
         try{
@@ -64,6 +64,44 @@ class UserService{
     static async getAll(){
         try{
             return await UserRepository.getAll();
+        }catch(error){
+            throw error;
+        }
+    }
+    static async getNonValidUsers() {
+        try {
+            const users = await this.getAll() || []; // Assurez-vous que getAll() est une méthode asynchrone si nécessaire
+            const tableUsers = [];
+    
+            if (users.length > 0) {
+                users.forEach((user) => {
+                    if (user.userType !== 'Admin' && !user.isValid) {
+                        tableUsers.push(user);
+                    }
+                });
+            }
+    
+            // Vérification de l'unicité des utilisateurs dans tableUsers
+            const uniqueUsers = Array.from(new Set(tableUsers.map(user => user.id))); // Assurez-vous que chaque utilisateur a un identifiant unique
+            const filteredUsers = uniqueUsers.map(id => tableUsers.find(user => user.id === id));
+    
+            return filteredUsers;
+    
+        } catch (error) {
+            throw error;
+        }
+    }
+    
+    static async getUsersToDashboard(){
+        try{
+     return await UserRepository.getUsersToDashboard();
+        }catch(error){
+            throw error;
+        }
+    }
+    static async getAdminStat(){
+        try{
+            return await UserRepository.getAdminStat();
         }catch(error){
             throw error;
         }

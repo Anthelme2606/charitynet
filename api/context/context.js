@@ -21,7 +21,7 @@ const context = async ({ req, res }) => {
     return {};
   }
   
-  if ( req.body.operationName === "Signup" ||req.body.operationName === "GetUsers" || req.body.operationName==="GetProjets" || req.body.operationName === "Login" 
+  if ( req.body.operationName === "Signup" || req.body.operationName === "SendMail" || req.body.operationName === "GetUsers" || req.body.operationName==="GetProjets" || req.body.operationName === "Login" 
   ) {
    
     return {};

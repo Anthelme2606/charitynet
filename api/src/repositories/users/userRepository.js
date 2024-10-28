@@ -1,7 +1,8 @@
 const UserModel = require('../../models/users/userModel');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
+const {Op} =require('sequelize');
+const ProjetModel = require('../../models/projets/projetModel');
 class UserRepository {
     static async createAccount(data) {
         try {
@@ -159,6 +160,96 @@ static async getByEmail(email){
     try {
       const users = await UserModel.findAll();
       return users;
+    } catch (error) {
+      throw error;
+    }
+  }
+  static async getUsersToDashboard() {
+    try {
+      // Récupérer tous les utilisateurs
+      const allUsers = await UserModel.findAndCountAll();
+
+      // Compter le nombre de Donors
+      const allDonors = await UserModel.count({
+        where: { userType: 'Donor' }
+      });
+
+      // Compter le nombre de Beneficiaries
+      const allBeneficiaries = await UserModel.count({
+        where: { userType: 'Beneficiary' }
+      });
+
+      // Récupérer le nombre d'utilisateurs créés ce mois-ci
+      const now = new Date();
+      const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+      const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+
+      const usersThisMonth = await UserModel.count({
+        where: {
+          createdAt: {
+            [Op.between]: [startOfMonth, endOfMonth]
+          }
+        }
+      });
+
+      // Calculer les pourcentages
+      const totalUsers = allUsers.count;
+      const statUserMonth = totalUsers > 0 ? (usersThisMonth / totalUsers) * 100 : 0;
+      const statDonor = totalUsers > 0 ? (allDonors / totalUsers) * 100 : 0;
+      const statBeneficiary = totalUsers > 0 ? (allBeneficiaries / totalUsers) * 100 : 0;
+
+      // Retourner les données sous forme d'objet
+      return {
+        totalUsers,
+        allDonors,
+        allBeneficiaries,
+        statUserMonth,
+        statDonor:statDonor.toFixed(2),
+        statBeneficiary:statBeneficiary.toFixed(2)
+      };
+    } catch (error) {
+      throw error;
+    }
+  }
+  static async getAdminStat() {
+    try {
+      // Total users
+      const totalUsers = await UserModel.count();
+
+      // Count users by type
+      const donorsCount = await UserModel.count({ where: { userType: 'Donor' } });
+      const beneficiariesCount = await UserModel.count({ where: { userType: 'Beneficiary' } });
+      const obnlCount = await UserModel.count({ where: { userType: 'OBNL' } });
+
+      // Calculate percentages
+      const donorPercentage = (donorsCount / totalUsers) * 100;
+      const beneficiaryPercentage = (beneficiariesCount / totalUsers) * 100;
+      const obnlPercentage = (obnlCount / totalUsers) * 100;
+
+      // Dates for the current month
+      const now = new Date();
+      const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+      const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+
+      // Total projects and projects created this month
+      const totalProjects = await ProjetModel.count();
+      const monthlyProjectsCount = await ProjetModel.count({
+        where: {
+          createdAt: {
+            [Op.between]: [startOfMonth, endOfMonth],
+          },
+        },
+      });
+
+      // Calculate project percentage for the current month
+      const monthlyProjectPercentage = (monthlyProjectsCount / totalProjects) * 100;
+
+      return {
+        donorPercentage: donorPercentage.toFixed(2),
+        beneficiaryPercentage: beneficiaryPercentage.toFixed(2),
+        obnlPercentage: obnlPercentage.toFixed(2),
+        monthlyProjectPercentage: monthlyProjectPercentage.toFixed(2),
+      };
     } catch (error) {
       throw error;
     }

@@ -1,0 +1,153 @@
+
+  .dashboard-container{
+    display:flex;
+    flex-direction:column;
+  }
+  .shadow-don {
+    background-color: #fefefe;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* .card,
+  .card-header,
+  .card-body,
+  .card-footer {
+    background-color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  } */
+  
+  .d-icon {
+    font-size: 20px;
+  }
+  
+  .notify-me {
+    position: absolute;
+    left: 2px;
+    top: 0;
+  }
+  
+  .notify-number {
+    position: absolute;
+    top: 0;
+    left: 8px;
+    font-size: 9px;
+    text-align: center;
+    background-color: red;
+    border-radius: 2px;
+    color: #fff;
+  }
+  
+  .notify-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+  
+  .del,
+  .number,
+  .text,
+  .look {
+    margin: 10px;
+  }
+  
+  .insert,
+  .number,
+  .text,
+  .look {
+    margin: 10px;
+  }
+  
+  .upd,
+  .number,
+  .text,
+  .look {
+    margin: 10px;
+  }
+  .primary-color{
+    background-color: var(--primary-color) !important;
+    color:var(--white) !important;
+  }
+  .card.primary-color .card-header,
+.card.primary-color .card-body,
+.card.primary-color .card-footer {
+    background-color: var(--primary-color) !important;
+    color: var(--white) !important;
+}
+.bg-white{
+  background-color:#fff !important;
+}
+.status {
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.3rem;
+  color:var(--white)!important;
+  font-weight: bold;
+}
+
+.status-pending {
+  background-color: orange;
+  color:var(--white)!important;
+}
+
+.status-in-progress {
+  background-color: blue;
+  color:var(--white)!important;
+}
+
+.status-completed {
+  background-color: green;
+  color:var(--white)!important;
+}
+
+
+  
+  .look {
+    text-align: center;
+    color: gray;
+    cursor: pointer;
+    background-color: aliceblue;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-text {
+    font-weight: 700;
+    color: #333;
+  }
+  
+  .card-title {
+    font-size: 12px !important;
+  }
+  
+  .carte-footer {
+    background-color: blueviolet;
+  }
+  
+  .quick-query-btn {
+    height:100% !important;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .quick-query-btn:hover {
+    background-color: #f0f0f0;
+    border-color: #ddd;
+    color: #000;
+  }
+  
+  @media (max-width: 786px) {
+    .dashboard-container {
+      overflow-x: hidden;
+    }
+  }
+  

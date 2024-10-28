@@ -8,7 +8,7 @@ const Footer =()=>{
     return (
     
  <footer className="w-100 m-0 p-0">
-  <div className="container py-5">
+  <div className="w-100 py-5">
     <div className="row">
       <div className="col-md-3 mb-4">
         <h3 className="h5 font-weight-bold">À propos de nous</h3>

@@ -33,7 +33,7 @@ const Sidebar = () => {
             {links.map((link, index) => (
               <li className="link-item" key={index}>
                 <NavLink
-                  to={link.link}  // Assurez-vous que le lien est correct ici
+                  to={link.link}  
                   className={({ isActive }) =>
                     `nav-item d-flex rounded-lg align-items-center ${isActive ? 'link-active' : ''}`
                   }

@@ -1,0 +1,114 @@
+.project-header {
+    background-color: black ;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Ajouté pour mieux gérer les petits écrans */
+}
+
+.project-title {
+    margin: 0;
+    font-size: 2.5vw; /* Utilisation de vw pour une adaptation réactive */
+}
+
+.validate-button {
+    background-color: #ffffff;
+    color: #ff9800;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.validate-button:hover {
+    background-color: #ff9800;
+    color: #ffffff;
+}
+
+/* .single-picture {
+    width: 100%;
+    height: auto; 
+    max-height: 300px; 
+    object-fit: cover;
+} */
+
+.project-content {
+    width:100%;
+    padding: 20px;
+}
+
+.project-summary {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.project-description {
+    margin-bottom: 20px;
+}
+
+.project-goal {
+    background-color: #fff3e0;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #ff9800;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.user-info-info-info {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.user-info-info-info h3 {
+    margin-top: 0;
+    color: #ff9800;
+}
+
+.user-info-info-info p {
+    margin: 5px 0;
+}
+
+/* Styles responsive pour petits écrans */
+@media (max-width: 768px) {
+    .project-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .validate-button {
+        margin-top: 10px;
+    }
+
+    .project-title {
+        font-size: 22px; /* Taille de texte ajustée */
+    }
+
+    .project-goal {
+        font-size: 20px; /* Adapter le texte */
+        padding: 10px;
+    }
+
+    .project-content, .user-info-info-info {
+        padding: 15px; /* Réduire le padding */
+    }
+}
+
+@media (max-width: 480px) {
+    .project-title {
+        font-size: 18px;
+    }
+
+    .validate-button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}

@@ -27,10 +27,14 @@ async function createDatabaseIfNotExists(dbName) {
 //   allowNull: true, 
 // 
 // };
-const tableName = 'projets';
+// const tableName = 'projets';
+// const modifications = [
+//   { action: 'ADD', column: 'objectif', options: 'DECIMAL(10, 2) NULL' }, // DECIMAL pour les montants financiers
+//   { action: 'ADD', column: 'resume', options: 'TEXT NULL' }, // TEXT pour le résumé (summary)
+// ];
+const tableName = 'users';
 const modifications = [
-  { action: 'ADD', column: 'objectif', options: 'DECIMAL(10, 2) NULL' }, // DECIMAL pour les montants financiers
-  { action: 'ADD', column: 'resume', options: 'TEXT NULL' }, // TEXT pour le résumé (summary)
+  { action: 'ADD', column: 'isValid', options: "BOOLEAN DEFAULT FALSE" },
 ];
 
 
@@ -39,7 +43,7 @@ const modifications = [
 
 async function startDatabase() {
   try {
-   // await alterTable(sequelize, tableName, modifications);
+  // await alterTable(sequelize, tableName, modifications);
     const dbName = process.env.DB_NAME;
     await createDatabaseIfNotExists(dbName);
     await sequelize.authenticate();

@@ -1,0 +1,70 @@
+
+        .card-wave {
+            width: 100% !important;
+            height: 200px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .card-content-wave {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            color: white;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .gradient-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, blueviolet, orange);
+        }
+        .wave-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+        .wave-wave svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 71px;
+        }
+        .wave-wave .shape-fill {
+            fill: #FFFFFF;
+        }
+        .text-wave {
+            font-size: 18px;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .badge-wave {
+            background-color: var(--violet) !important;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+        }
+  

@@ -1,0 +1,82 @@
+
+
+/* h2 {
+    color: #343a40;
+    font-weight: 700;
+    margin-bottom: 20px;
+} */
+
+.table-responsive {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.custom-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.custom-table thead th {
+    background-color: blueviolet;
+    color: #fff;
+    padding: 8px;
+    text-align: center;
+    font-weight: 600;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.custom-table tbody td {
+    padding: 4px;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid blueviolet;
+}
+
+/* Styles pour mobile */
+@media (max-width: 768px) {
+    .table-responsive {
+        padding: 0;
+    }
+
+    .custom-table {
+        display: none;
+    }
+
+    .tcard {
+        margin-bottom: 20px;
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .tcard-body {
+        padding: 15px;
+    }
+    
+
+    .badge {
+        font-size: 14px;
+        padding: 5px 10px;
+        border-radius: 12px;
+    }
+
+    .card-actions {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 15px;
+    }
+
+    .card-actions button {
+        width: 45px;
+        height: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        border-radius: 50%;
+    }
+}
