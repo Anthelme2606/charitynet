@@ -2,9 +2,14 @@ import React from 'react';
 import "../public/assets/css/components/userManager.css";
 
 const users = [
-    { email: 'user1@example.com', country: 'France' },
-    { email: 'user2@example.com', country: 'Belgique' },
-    { email: 'user3@example.com', country: 'Suisse' },
+    { donateur: 'user1@example.com', country: 'France',
+        beneficiaire:"beneficiaire1@example.com",montant:500000},
+        { donateur: 'user1@example.com', country: 'France',
+            beneficiaire:"beneficiaire1@example.com",montant:500000},
+            { donateur: 'user1@example.com', country: 'Togo',
+                beneficiaire:"beneficiaire1@example.com",montant:500000},
+                { donateur: 'user1@example.com', country: 'Russie',
+                    beneficiaire:"beneficiaire1@example.com",montant:500000},
 ];
 
 const DonManager = () => {
@@ -21,30 +26,35 @@ const DonManager = () => {
             <table className="m-table">
                 <thead>
                     <tr>
-                        <th>Utilisateur</th>
+                        <th>Donateur</th>
                         <th>Pays</th>
-                        <th>Pays</th>
+                        <th>Beneficiaire</th>
+                        <th>Montant</th>
+                       
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     {users.map((user, index) => (
                         <tr key={index}>
-                            <td>{user.email}</td>
+                            <td>{user.donateur}</td>
                             <td>{user.country}</td>
+                            <td>{user.beneficiaire}</td>
+                            <td>{user.montant}€</td>
                             <td>
-                                <button
-                                    className="action-btn view-btn"
-                                    onClick={() => handleView(user.email)}
-                                >
-                                    Voir
-                                </button>
-                                <button
-                                    className="action-btn disable-btn"
-                                    onClick={() => handleDisable(user.email)}
-                                >
-                                    Désactiver
-                                </button>
+                            <button
+                        className="badge preview px-4 "
+                        onClick={() => handleView(user.donateur)}
+                    >
+                        <span className="bi bi-eye-fill"></span>
+                    </button>
+                    <button
+                        className="badge preview mx-2 px-4"
+                        onClick={() => handleView(user.donateur)}
+                    >
+                        <span className="bi bi-download"></span>
+                    </button>
+                               
                             </td>
                         </tr>
                     ))}
@@ -54,20 +64,27 @@ const DonManager = () => {
             {/* Cards for mobile view */}
             {users.map((user, index) => (
                 <div className="user-m-card" key={index}>
-                    <h3>{user.email}</h3>
+                    <h3>Donteur:{user.donateur}</h3>
                     <p><strong>Pays:</strong> {user.country}</p>
+                    <p><strong>Beneficiaire:</strong> {user.beneficiaire}</p>
+                    <p><strong>Montant:</strong> {user.montant}€</p>
                     <button
-                        className="action-btn view-btn"
-                        onClick={() => handleView(user.email)}
+                        className="text-center badge px-4 preview"
+                        onClick={() => handleView(user.donateur)}
                     >
-                        Voir
+                        <span className="bi bi-eye-fill"></span>
                     </button>
                     <button
-                        className="action-btn disable-btn"
-                        onClick={() => handleDisable(user.email)}
+                        className=" text-center badge mx-2 px-4 preview"
+                        onClick={() => handleView(user.donateur)}
                     >
-                        Désactiver
+                        <span className="bi bi-download"></span>
                     </button>
+                    
                 </div>
             ))}
-        </div
+        </div>
+    );
+};
+
+export default DonManager;

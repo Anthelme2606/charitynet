@@ -119,6 +119,11 @@ body{
    
 
 }
+.preview{
+  color:var(--primary-color) !important;
+  font-weight:bold !important;
+  font-size:20px !important;
+}
 .primary-color{
   background-color: black !important;
   color:var(--white) !important;
