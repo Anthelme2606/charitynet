@@ -14,6 +14,7 @@ import ProjectTracking from "../../pages/beneficiaires/suivie";
 import Wallet from "../../pages/beneficiaires/wallet";
 import DetailProjectPage from "../../pages/admins/detailsProject";
 import ManageUser from "../../pages/admins/manage-user-page";
+import RapportPage from "../../pages/admins/rapport-page";
 import ManageDon from "../../pages/admins/dons-manager-page";
 import About from "../../pages/about";
 import Gestionnaire from "../../pages/beneficiaires/gestion";
@@ -33,6 +34,9 @@ const AppRoute = () => {
         } />
          <Route path={ROUTES.DONMANAGER}element={<IsAdmin><ManageDon /></IsAdmin>
         } />
+        <Route path={ROUTES.RAPPORTMANAGER}element={<IsAdmin><RapportPage /></IsAdmin>
+        } />
+        
      
         <Route path={ROUTES.LOGIN} element={<GuardRoute component={Login} redirectTo={ROUTES.DASHBOARD} />} />
         <Route path={ROUTES.CAUSECREATE} element={<IsBeneficiary><BeneficiaireDashboard/></IsBeneficiary>} />

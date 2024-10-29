@@ -13,10 +13,9 @@ const SidebarLinks = () => {
                 { name: 'Tableau de bord', link: ROUTES.DASHBOARD },
                 { name: 'Gérer les utilisateurs',link:ROUTES.USERMANAGER  },
                 { name: 'Gestion des dons', link:ROUTES.DONMANAGER },
-                { name: 'Rapports', link: '/admin/reports' },
-                { name: 'Paramètres', link: '/admin/settings' },
-                { name: 'Aide', link: '/admin/help' },
-                { name: 'Déconnexion', link: '/logout' }
+                { name: 'Caisse', link:"admin/caisse" },
+                { name: 'Rapports', link: ROUTES.RAPPORTMANAGER },
+                { name: 'Déconnexion', link:ROUTES.LOGOUT }
             );
             break;
     
@@ -27,7 +26,6 @@ const SidebarLinks = () => {
                 { name: 'Historique des dons', link: '/donor/history' },
                 { name: 'Profil', link: '/donor/profile' },
                 { name: 'Notifications', link: '/donor/notifications' },
-                { name: 'Aide', link: '/donor/help' },
                 { name: 'À propos', link: ROUTES.ABOUT }
             );
             break;
@@ -41,7 +39,6 @@ const SidebarLinks = () => {
                 { name: 'Mon portefeuille', link: ROUTES.WALLET},
                 { name: 'Profil', link: '/beneficiary/profile' },
                 { name: 'Notifications', link: '/beneficiary/notifications' },
-                { name: 'Aide', link: '/beneficiary/help' },
                 { name: 'À propos', link: ROUTES.ABOUT }
             );
             break;
@@ -53,7 +50,6 @@ const SidebarLinks = () => {
                 { name: 'Historique des dons', link: '/obnl/donations' },
                 { name: 'Profil', link: '/obnl/profile' },
                 { name: 'Rapports', link: '/obnl/reports' },
-                { name: 'Aide', link: '/obnl/help' },
                 { name: 'À propos', link:ROUTES.ABOUT }
             );
             break;
@@ -65,7 +61,6 @@ const SidebarLinks = () => {
                 { name: 'Mon profil', link: '/profile' },
                 
                 { name: 'Notifications', link: '/notifications' },
-                { name: 'Aide', link: '/help' },
                 { name: 'À propos', link:ROUTES.ABOUT }
             );
             break;
