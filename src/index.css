@@ -240,6 +240,7 @@ body{
     background-color:var(--orange) !important; 
     color: var(--white) !important; 
     }
+  
     .top-right{
       right:2px !important;
       top:0 !important;

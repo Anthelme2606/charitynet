@@ -1,149 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Creator</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Bienvenue sur CharityNet</title>
     <style>
         body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-}
-
-header {
-    text-align: center;
-}
-
-section {
-    margin-bottom: 40px;
-}
-
-#project-form {
-    border: 1px solid #ccc;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin-top: 10px;
-}
-
-input, textarea {
-    margin-top: 5px;
-}
-
-.card {
-    border: 1px solid #eee;
-    border-radius: 8px;
-    padding: 15px;
-    margin: 10px 0;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
-}
-
-/* Add media queries for responsiveness */
-@media (max-width: 600px) {
-    #project-form, #project-examples {
-        flex-direction: column;
-    }
-}
-        </style>
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #555;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Create Your Project</h1>
-    </header>
-
-    <main>
-        <section id="project-form">
-            <h2>New Project Form</h2>
-            <form id="create-project-form">
-                <label for="title">Titre:</label>
-                <input type="text" id="title" required>
-                
-                <label for="summary">Résumé:</label>
-                <textarea id="summary" required></textarea>
-                
-                <label for="domain">Domaine du Projet:</label>
-                <input type="text" id="domain" required>
-                
-                <label for="section-title">Titre de la Section:</label>
-                <input type="text" id="section-title" required>
-                
-                <label for="description">Description (50 lignes):</label>
-                <textarea id="description" rows="10" required></textarea>
-                
-                <label for="file-url">Fichier ou Image ou URL descriptif du projet:</label>
-                <input type="text" id="file-url" required>
-                
-                <label for="objective">Objectif (argent ou somme besoin):</label>
-                <input type="number" id="objective" required>
-                
-                <label for="start-date">Date de Début:</label>
-                <input type="date" id="start-date" required>
-                
-                <label for="end-date">Date de Fin:</label>
-                <input type="date" id="end-date" required>
-                
-                <button type="submit">Créer un Projet</button>
-            </form>
-        </section>
-
-        <section id="project-examples">
-            <h2>Exemples de Projets Créés</h2>
-            <div class="card" id="example-card-1">
-                <h3>Titre du Projet Ex</h3>
-                <p><strong>Résumé:</strong> Brève description du projet.</p>
-                <p><strong>Domaine:</strong> Architecture</p>
-                <p><strong>Description:</strong> Détails époustouflants sur le projet, comprenant l'intégralité du processus de conception architecturale. Ce projet explore divers aspects....</p>
-                <p><strong>Objectif:</strong> 5000€</p>
-                <p><strong>Date de Début:</strong> 2023-01-01</p>
-                <p><strong>Date de Fin:</strong> 2023-12-31</p>
-            </div>
-            <!-- Add more example cards as needed -->
-        </section>
-    </main>
-
-    <script>
-        document.getElementById('create-project-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    // Gather form data
-    const title = document.getElementById('title').value;
-    const summary = document.getElementById('summary').value;
-    const domain = document.getElementById('domain').value;
-    const sectionTitle = document.getElementById('section-title').value;
-    const description = document.getElementById('description').value;
-    const fileUrl = document.getElementById('file-url').value;
-    const objective = document.getElementById('objective').value;
-    const startDate = document.getElementById('start-date').value;
-    const endDate = document.getElementById('end-date').value;
-
-    // Create a new project card
-    const newCard = document.createElement('div');
-    newCard.className = 'card';
-    
-    newCard.innerHTML = `
-        <h3>${title}</h3>
-        <p><strong>Résumé:</strong> ${summary}</p>
-        <p><strong>Domaine:</strong> ${domain}</p>
-        <p><strong>Description:</strong> ${description}</p>
-        <p><strong>Objectif:</strong> ${objective}€</p>
-        <p><strong>Date de Début:</strong> ${startDate}</p>
-        <p><strong>Date de Fin:</strong> ${endDate}</p>
-    `;
-    
-    document.getElementById('project-examples').appendChild(newCard);
-
-    // Reset form
-    document.getElementById('create-project-form').reset();
-});
-    </script>
+    <div class="container">
+        <h1>Bienvenue sur CharityNet !</h1>
+        <p>Bonjour [Nom de l'utilisateur],</p>
+        <p>Merci d'avoir créé un compte avec nous. Voici votre nom d'utilisateur :</p>
+        <p><strong>[Nom d'utilisateur]</strong></p>
+        <p>Nous sommes ravis de vous avoir parmi nous et nous espérons que vous apprécierez notre plateforme.</p>
+        <p>N'hésitez pas à nous contacter si vous avez des questions.</p>
+        
+        <div class="footer">
+            <p>Cordialement,<br>L'équipe CharityNet</p>
+        </div>
+    </div>
 </body>
 </html>

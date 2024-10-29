@@ -70,8 +70,8 @@ const Login = () => {
   };
 
   return (
-    <div className="w-100 m-1 p-1 d-flex justify-content-center align-items-center">
-    <div className={`${styles.container}   d-flex justify-content-center align-items-center flex-column vh-100`}>
+    <div className="w-100 m-1 p-1 d-flex justify-content-center align-items-center vh-100">
+    <div className={`${styles.container}   d-flex justify-content-center align-items-center flex-column `}>
     <NavLink to={ROUTES.HOME}>
   <div className={styles['logo-container']}>
     <img src={charity} alt="Logo de l'application" className={styles.logo} />

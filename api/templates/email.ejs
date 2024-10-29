@@ -3,74 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Information de votre compte Charitynet</title>
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #121212;
-            margin: 0;
-            padding: 0;
-            -webkit-text-size-adjust: 100%;
-            -ms-text-size-adjust: 100%;
-            overflow-x: hidden;
-        }
-        p {
-            font-size: 13px;
-        }
-    </style>
+    <title>Votre Nom d'Utilisateur</title>
 </head>
-<body>
-    <div style="display: flex; justify-content: center; align-items: center; padding: 0;">
-        <div style=" width: 100%; color: #EAEAEA; margin: 0 auto; background-color: #1A1A1A; padding: 0; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-            
-            <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; padding: 60px 0; background-color: #541670; color: #FFFFFF; position: relative; clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);">
-                <div style="position: absolute; top: 2px; left: 2px; display: flex; justify-content: center; align-items: center;">
-                    <img src="../uploads/charity.jpg" alt="Logo" style="width: 50px; height: 50px; border-radius: 50%; background: #fff; border: none !important;">
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 0; background-color: #f4f4f4;">
+    <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <tr>
+            <td style="background-color: #541670; color: white; padding: 30px 20px; text-align: center;">
+                <h1 style="margin: 0; font-size: 28px; font-weight: 700;">Votre Nom d'Utilisateur est Prêt</h1>
+            </td>
+        </tr>
+        <tr>
+            <td style="padding: 40px 20px; background-color: #ffffff;">
+                <p>Cher(e) <%=username%>,</p>
+                <p>Nous sommes ravis de vous informer que votre compte a été créé avec succès. Voici votre nom d'utilisateur :</p>
+                <div style="background-color: #ecf0f1; border: 2px solid blueviolet; border-radius: 6px; padding: 15px; margin: 20px 0; text-align: center; font-size: 24px; font-weight: 700; color: #2c3e50;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 10px;">
+                        <circle cx="12" cy="12" r="11" fill="black"/>
+                        <path d="M6 12L10 16L18 8" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                   <%=username%>
                 </div>
-                <h1 style="margin: 2px; font-size: 24px;">Bienvenue chez Charitynet</h1>
-            </div>
-
-            <div style="padding: 20px;">
-                <h1 style="font-size: 20px; color: #EAEAEA; padding-left: 10px; margin-top: 20px;">Bonjour,<%=receiver%></h1>
-                <p style="font-size: 13px; color: #EAEAEA; line-height: 1.5; margin-bottom: 20px;">
-                    Félicitations ! Votre compte sur Charitynet a été créé avec succès.
-                </p>
-                <p style="font-size: 13px; color: #EAEAEA; line-height: 1.5; margin-bottom: 20px;">
-                    Votre nom d'utilisateur : <strong><%=username%></strong>
-                </p>
-
-                <h2 style="text-align: center; background: #f8a708; font-size: 16px; color: #EAEAEA; border-left: 4px solid #24bd5a; padding: 20px; border-radius: 10px;">
-                    Pourquoi choisir Charitynet ?
-                </h2>
-                <ul style="list-style-type: none; padding: 0;">
-                    <li style="font-size: 13px; color: #EAEAEA; margin-bottom: 10px;">Facilitez la gestion de vos dons et assurez-vous qu'ils atteignent ceux qui en ont besoin.</li>
-                    <li style="font-size: 13px; color: #EAEAEA; margin-bottom: 10px;">Suivez vos dons en temps réel et recevez des rapports d'impact détaillés.</li>
-                    <li style="font-size: 13px; color: #EAEAEA; margin-bottom: 10px;">Collaborez avec d'autres bienfaiteurs et créez des campagnes collectives.</li>
-                </ul>
-
-                <p style="font-size: 13px; color: #EAEAEA; line-height: 1.5; margin-bottom: 20px;">
-                    Nous sommes ravis de vous accompagner dans cette aventure de bienfaisance et sommes à votre disposition pour vous aider à chaque étape.
-                </p>
-                
-                <h2 style="text-align: center; background: #f8a708; font-size: 16px; color: #EAEAEA; border-left: 4px solid #24bd5a; padding: 20px; border-radius: 10px;">
-                    Prêt(e) à faire la différence ?
-                </h2>
-
-                <p style="font-size: 13px; color: #EAEAEA; line-height: 1.5; margin-bottom: 20px;">
-                    Connectez-vous dès maintenant pour explorer votre tableau de bord, créer des campagnes de dons, et voir comment votre contribution peut impacter positivement des vies.
-                </p>
-                <p style="font-size: 13px; color: #EAEAEA; line-height: 1.5; margin-bottom: 20px;">
-                    Pour toute question, répondez simplement à cet e-mail, et notre équipe de support sera heureuse de vous aider.
-                </p>
-            </div>
-
-            <!-- Pied de page -->
-            <div style="text-align: center; margin: 30px 0; padding: 20px; background-color: #444141; color: #CCCCCC; font-size: 13px;">
-                <p style="margin: 0;">À très bientôt,<br>L'équipe Charitynet</p>
-                <p style="margin: 0;">wearecharitynet@gmail.com</p>
-            </div>
-
-        </div>
-    </div>
+                <p>Pour des raisons de sécurité, nous vous recommandons de :</p>
+                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                    <tr>
+                        <td style="padding-bottom: 10px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 10px;">
+                                <path d="M19 11H5V21H19V11Z" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M17 9V8C17 5.23858 14.7614 3 12 3C9.23858 3 7 5.23858 7 8V9" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Mémoriser ce nom d'utilisateur
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-bottom: 10px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 10px;">
+                                <path d="M21 2L19 4M11.3891 11.6109C12.3844 12.6062 12.3844 14.2062 11.3891 15.2015C10.3938 16.1968 8.79376 16.1968 7.79845 15.2015C6.80314 14.2062 6.80314 12.6062 7.79845 11.6109C8.79376 10.6156 10.3938 10.6156 11.3891 11.6109Z" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M11 5L18 12M18 12L21 15M18 12L15 15M3 21L10 14" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Créer un mot de passe fort
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle; margin-right: 10px;">
+                                <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 16V12M12 8H12.01" stroke="#2c3e50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            Ne jamais partager ces informations
+                        </td>
+                    </tr>
+                </table>
+                <p>Pour accéder à votre compte et définir votre mot de passe, veuillez cliquer sur le bouton ci-dessous :</p>
+                <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                    <tr>
+                        <td align="center" style="padding: 20px 0;">
+                            <a href="#" style="display: inline-block; padding: 12px 24px; background-color: blueviolet; color: white; text-decoration: none; border-radius: 5px; font-weight: 700; text-align: center;">Accéder à Mon Compte</a>
+                        </td>
+                    </tr>
+                </table>
+                <p>Si vous avez des questions ou besoin d'assistance, n'hésitez pas à contacter notre équipe de support.</p>
+                <p>Cordialement,<br>L'équipe CharityNet</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="text-align: center; padding: 20px; background-color: #541670; color: #ecf0f1; font-size: 0.9em;">
+                <p>Cet e-mail a été envoyé à <%=receiver%>. Vos informations sont protégées conformément à notre <a href="{{lien_politique_confidentialite}}" style="color: #3498db;">politique de confidentialité</a>.</p>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>

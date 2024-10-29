@@ -30,7 +30,7 @@
    
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: #2c3e50 !important;
+    color: var(--white) !important;
     font-size:15px !important
 }
 .admin-projects-table tr {
