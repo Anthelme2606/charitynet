@@ -26,7 +26,8 @@ const SidebarLinks = () => {
                 { name: 'Historique des dons', link: '/donor/history' },
                 { name: 'Profil', link: '/donor/profile' },
                 { name: 'Notifications', link: '/donor/notifications' },
-                { name: 'À propos', link: ROUTES.ABOUT }
+                { name: 'À propos', link: ROUTES.ABOUT },
+                { name: 'Déconnexion', link:ROUTES.LOGOUT }
             );
             break;
     

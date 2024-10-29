@@ -1,0 +1,130 @@
+.text-purple {
+    color: #6f42c1;
+}
+
+.text-green {
+    color: #28a745;
+}
+
+.card.card-card{
+    background-color: var(--sidebar) !important;
+    border: none;
+
+}
+.card-body.card-card{
+    background-color: var(--sidebar) !important;
+    border: none;
+
+}
+.card-header.card-card{
+    background-color: var(--sidebar) !important;
+    border: none;
+
+}
+.card-footer.card-card{
+    background-color: var(--sidebar) !important;
+    border: none;
+
+}
+
+.card-user:hover {
+  
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+.icon-circle {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.card:hover .icon-circle {
+    background-color: #28a745;
+}
+
+.card:hover .icon-circle i {
+    color: white !important;
+}
+
+.counter {
+    font-size: 2.5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+/* .card-user:hover .counter {
+    transform: scale(1.1);
+} */
+
+.rounded-l-xl {
+    border-top-left-radius: 1rem !important;
+    border-bottom-left-radius: 1rem !important;
+}
+
+.transition-shadow {
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.transition-opacity {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.card-card{
+    background-color: var(--sidebar) !important;
+    
+    border-bottom: none;
+    padding-bottom: 0;
+}
+.card-user{
+    background-color: var(--sidebar) !important;
+}
+.card-user{
+    background-color: var(--sidebar) !important;
+}
+.card-user{
+    background-color: var(--sidebar) !important;
+}
+
+
+
+
+.title-icon-circle {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.card:hover .title-icon-circle {
+    background-color: var(--violet);
+}
+
+.card:hover .title-icon-circle i {
+    color: white !important;
+}
+
+.trend-icon-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+}
+
+.text-success {
+    color: var(--green);
+}
+
+.text-danger {
+    color: #dc3545;
+}

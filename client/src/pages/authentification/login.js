@@ -71,11 +71,7 @@ const Login = () => {
 
   return (
     <div className="w-100 m-1 p-1 d-flex justify-content-center align-items-center vh-100">
-<<<<<<< HEAD:client/src/pages/authentification/login.js
-    <div className={`${styles.container}   d-flex justify-content-center align-items-center flex-column `}>
-=======
     <div className={`${styles.container}   d-flex justify-content-center align-items-center flex-column`}>
->>>>>>> origin/anthelme-feature:src/pages/authentification/login.js
     <NavLink to={ROUTES.HOME}>
   <div className={styles['logo-container']}>
     <img src={charity} alt="Logo de l'application" className={styles.logo} />

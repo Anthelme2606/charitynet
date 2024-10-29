@@ -1,6 +1,7 @@
 import React from "react";
 import DashboardLayout from "../../layouts/dashboardLayout";
 import Card from "../../components/Card";
+import CardUser from "../../components/CardUser";
 import LineGraph from "../../components/LineGraph";
 import ProjectTileCard from "../../components/ProjectTileCard";
 
@@ -8,31 +9,31 @@ const DonorDashboard = () => {
   return (
     <DashboardLayout>
       <div className="w-100 dashboard-container m-0 p-0">
-        <div className="row row-cols-1 row-cols-md-3 g-1">
-          <div className="col">
-            <Card
-              titre={"Toto"}
-              value={100}
-              text={"nombre de compte"}
-              percent={10}
-            />
-          </div>
-          <div className="col">
-            <Card
-              titre={"Toto"}
-              value={100}
-              text={"nombre de compte"}
-              percent={10}
-            />
-          </div>
-          <div className="col">
-            <Card
-              titre={"Toto"}
-              value={100}
-              text={"nombre de compte"}
-              percent={10}
-            />
-          </div>
+        <div className="row">
+    
+        <CardUser 
+            titre="Dons" 
+            icon="bi-arrow-up-left" 
+            isUp={true} 
+            percentage={`${50}`} 
+            value={`2500€`}
+        />
+         
+         <CardUser 
+            titre="Dons" 
+            icon="bi-arrow-up-left" 
+            isUp={true} 
+            percentage={`${50}`} 
+            value={`2500€`}
+        />
+          
+          <CardUser 
+            titre="Dons" 
+            icon="bi-arrow-up-left" 
+            isUp={true} 
+            percentage={`${50}`} 
+            value={`2500€`}
+        />
         </div>
       </div>
       <div className="w-100 dashboard-container mt-2 p-4">

@@ -12,6 +12,7 @@ import DashboardTable from "../../components/dashboardTable";
 import AdminProjectsTable from "../../components/adminProjectsTable";
 import WaveCard from "../../components/wave-card";
 import UsersCard from "../../components/users-card";
+import CardUser from '../../components/CardUser';
 
 const AdminDashboard = () => {
   const getNonValidProjects=(projects)=> {
@@ -100,129 +101,45 @@ const AdminDashboard = () => {
 
           {/* Right Column (Main Dashboard Info) */}
           <div className="col-md-7">
-            <div className="row row-cols-1 row-cols-md-2 g-1">
-              <div className="col">
-                <div className="card h-100 text-center">
-                  <div className="card-body bg-white">
-                    <div className="d-flex justify-content-between">
-                      <i className="bi bi-people mb-3 d-icon text-primary"></i>
-                      <h5 className="card-title">Utilisateurs</h5>
-                    </div>
-                    <p className="card-text">
-                      {totalUsers}
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      {statUserMonth}% par rapport au mois dernier
-                    </p>
-                  </div>
-                  <div className="card-footer bg-white p-0">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 1440 320"
-                      className="w-100"
-                      style={{ display: "block" }}
-                    >
-                      <path
-                        fill="blueviolet"
-                        fillOpacity="1"
-                        d="M0,64L11.4,69.3C22.9,75,46,85,69,106.7C91.4,128,114,160,137,181.3C160,203,183,213,206,192C228.6,171,251,117,274,112C297.1,107,320,149,343,186.7C365.7,224,389,256,411,229.3C434.3,203,457,117,480,80C502.9,43,526,53,549,64C571.4,75,594,85,617,112C640,139,663,181,686,213.3C708.6,245,731,267,754,266.7C777.1,267,800,245,823,224C845.7,203,869,181,891,176C914.3,171,937,181,960,202.7C982.9,224,1006,256,1029,234.7C1051.4,213,1074,139,1097,96C1120,53,1143,43,1166,80C1188.6,117,1211,203,1234,245.3C1257.1,288,1280,288,1303,256C1325.7,224,1349,160,1371,154.7C1394.3,149,1417,203,1429,229.3L1440,256L1440,320L1428.6,320C1417.1,320,1394,320,1371,320C1348.6,320,1326,320,1303,320C1280,320,1257,320,1234,320C1211.4,320,1189,320,1166,320C1142.9,320,1120,320,1097,320C1074.3,320,1051,320,1029,320C1005.7,320,983,320,960,320C937.1,320,914,320,891,320C868.6,320,846,320,823,320C800,320,777,320,754,320C731.4,320,709,320,686,320C662.9,320,640,320,617,320C594.3,320,571,320,549,320C525.7,320,503,320,480,320C457.1,320,434,320,411,320C388.6,320,366,320,343,320C320,320,297,320,274,320C251.4,320,229,320,206,320C182.9,320,160,320,137,320C114.3,320,91,320,69,320C45.7,320,23,320,11,320L0,320Z"
-                      ></path>
-                    </svg>
-                  </div>
-                </div>
-              </div>
+          <div className="row">
+   
+        <CardUser 
+            titre="Utilisateurs" 
+            icon="bi-arrow-up-left" 
+            isUp={true} 
+            percentage={`${statUserMonth}`} 
+            value={totalUsers}
+        />
+         <CardUser 
+            titre="Bénéficiaires" 
+            icon="bi-arrow-up-left" 
+            isUp={true} 
+            percentage={`${statBeneficiary}`} 
+            value={allBeneficiaries}
+        />
+         <CardUser 
+            titre="Donateurs" 
+            icon="bi-arrow-up-left" 
+            isUp={true} 
+            percentage={`${statDonor}`} 
+            value={allDonors}
+        />
+         <CardUser 
+            titre="Dons" 
+            icon="bi-arrow-up-left" 
+            isUp={true} 
+            percentage={`${statUserMonth}`} 
+            value={`2500€`}
+        />
+   
 
-              <div className="col">
-                <div className="card h-100  text-center ">
-                  <div className="card-body bg-white ">
-                    <div className="d-flex justify-content-between">
-                      <i className="bi bi-person-check mb-3 d-icon text-success"></i>
-                      <h5 className="card-title">Bénéficiaires</h5>
-                    </div>
-                    <p className="card-text">
-                      {allBeneficiaries}
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      +{statBeneficiary}% par rapport au mois dernier
-                    </p>
-                  </div>
-                  <div className="card-footer bg-white p-0">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 1440 320"
-                      className="w-100"
-                      style={{ display: "block" }}
-                    >
-                      <path
-                        fill="blueviolet"
-                        fillOpacity="1"
-                        d="M0,64L11.4,69.3C22.9,75,46,85,69,106.7C91.4,128,114,160,137,181.3C160,203,183,213,206,192C228.6,171,251,117,274,112C297.1,107,320,149,343,186.7C365.7,224,389,256,411,229.3C434.3,203,457,117,480,80C502.9,43,526,53,549,64C571.4,75,594,85,617,112C640,139,663,181,686,213.3C708.6,245,731,267,754,266.7C777.1,267,800,245,823,224C845.7,203,869,181,891,176C914.3,171,937,181,960,202.7C982.9,224,1006,256,1029,234.7C1051.4,213,1074,139,1097,96C1120,53,1143,43,1166,80C1188.6,117,1211,203,1234,245.3C1257.1,288,1280,288,1303,256C1325.7,224,1349,160,1371,154.7C1394.3,149,1417,203,1429,229.3L1440,256L1440,320L1428.6,320C1417.1,320,1394,320,1371,320C1348.6,320,1326,320,1303,320C1280,320,1257,320,1234,320C1211.4,320,1189,320,1166,320C1142.9,320,1120,320,1097,320C1074.3,320,1051,320,1029,320C1005.7,320,983,320,960,320C937.1,320,914,320,891,320C868.6,320,846,320,823,320C800,320,777,320,754,320C731.4,320,709,320,686,320C662.9,320,640,320,617,320C594.3,320,571,320,549,320C525.7,320,503,320,480,320C457.1,320,434,320,411,320C388.6,320,366,320,343,320C320,320,297,320,274,320C251.4,320,229,320,206,320C182.9,320,160,320,137,320C114.3,320,91,320,69,320C45.7,320,23,320,11,320L0,320Z"
-                      ></path>
-                    </svg>
-                  </div>
-                </div>
-              </div>
+   
 
-              <div className="col">
-                <div className="card h-100  text-center ">
-                  <div className="card-body bg-white ">
-                    <div className="d-flex justify-content-between">
-                      <i className="bi bi-heart mb-3 d-icon text-danger"></i>
-                      <h5 className="card-title">Donateurs</h5>
-                    </div>
-                    <p className="card-text">
-                      {allDonors}
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      +{statDonor}% par rapport au mois dernier
-                    </p>
-                  </div>
-                  <div className="card-footer bg-white p-0">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 1440 320"
-                      className="w-100"
-                      style={{ display: "block" }}
-                    >
-                      <path
-                        fill="blueviolet"
-                        fillOpacity="1"
-                        d="M0,64L11.4,69.3C22.9,75,46,85,69,106.7C91.4,128,114,160,137,181.3C160,203,183,213,206,192C228.6,171,251,117,274,112C297.1,107,320,149,343,186.7C365.7,224,389,256,411,229.3C434.3,203,457,117,480,80C502.9,43,526,53,549,64C571.4,75,594,85,617,112C640,139,663,181,686,213.3C708.6,245,731,267,754,266.7C777.1,267,800,245,823,224C845.7,203,869,181,891,176C914.3,171,937,181,960,202.7C982.9,224,1006,256,1029,234.7C1051.4,213,1074,139,1097,96C1120,53,1143,43,1166,80C1188.6,117,1211,203,1234,245.3C1257.1,288,1280,288,1303,256C1325.7,224,1349,160,1371,154.7C1394.3,149,1417,203,1429,229.3L1440,256L1440,320L1428.6,320C1417.1,320,1394,320,1371,320C1348.6,320,1326,320,1303,320C1280,320,1257,320,1234,320C1211.4,320,1189,320,1166,320C1142.9,320,1120,320,1097,320C1074.3,320,1051,320,1029,320C1005.7,320,983,320,960,320C937.1,320,914,320,891,320C868.6,320,846,320,823,320C800,320,777,320,754,320C731.4,320,709,320,686,320C662.9,320,640,320,617,320C594.3,320,571,320,549,320C525.7,320,503,320,480,320C457.1,320,434,320,411,320C388.6,320,366,320,343,320C320,320,297,320,274,320C251.4,320,229,320,206,320C182.9,320,160,320,137,320C114.3,320,91,320,69,320C45.7,320,23,320,11,320L0,320Z"
-                      ></path>
-                    </svg>
-                  </div>
-                </div>
-              </div>
+   
 
-              <div className="col">
-                <div className="card h-100  text-center ">
-                  <div className="card-body bg-white ">
-                    <div className="d-flex justify-content-between">
-                      <i className="bi bi-cash-stack mb-3 d-icon text-warning"></i>
-                      <h5 className="card-title">Total des dons</h5>
-                    </div>
-                    <p className="card-text">€ 25,000</p>
-                    <p className="text-sm text-muted-foreground">
-                      +15% par rapport au mois dernier
-                    </p>
-                  </div>
-                  <div className="card-footer bg-white p-0">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 1440 320"
-                      className="w-100"
-                      style={{ display: "block" }}
-                    >
-                      <path
-                        fill="blueviolet"
-                        fillOpacity="1"
-                        d="M0,64L11.4,69.3C22.9,75,46,85,69,106.7C91.4,128,114,160,137,181.3C160,203,183,213,206,192C228.6,171,251,117,274,112C297.1,107,320,149,343,186.7C365.7,224,389,256,411,229.3C434.3,203,457,117,480,80C502.9,43,526,53,549,64C571.4,75,594,85,617,112C640,139,663,181,686,213.3C708.6,245,731,267,754,266.7C777.1,267,800,245,823,224C845.7,203,869,181,891,176C914.3,171,937,181,960,202.7C982.9,224,1006,256,1029,234.7C1051.4,213,1074,139,1097,96C1120,53,1143,43,1166,80C1188.6,117,1211,203,1234,245.3C1257.1,288,1280,288,1303,256C1325.7,224,1349,160,1371,154.7C1394.3,149,1417,203,1429,229.3L1440,256L1440,320L1428.6,320C1417.1,320,1394,320,1371,320C1348.6,320,1326,320,1303,320C1280,320,1257,320,1234,320C1211.4,320,1189,320,1166,320C1142.9,320,1120,320,1097,320C1074.3,320,1051,320,1029,320C1005.7,320,983,320,960,320C937.1,320,914,320,891,320C868.6,320,846,320,823,320C800,320,777,320,754,320C731.4,320,709,320,686,320C662.9,320,640,320,617,320C594.3,320,571,320,549,320C525.7,320,503,320,480,320C457.1,320,434,320,411,320C388.6,320,366,320,343,320C320,320,297,320,274,320C251.4,320,229,320,206,320C182.9,320,160,320,137,320C114.3,320,91,320,69,320C45.7,320,23,320,11,320L0,320Z"
-                      ></path>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
+   
+</div>
+
 
             {/* Quick Query Buttons */}
             <div className="w-100 mt-4">
