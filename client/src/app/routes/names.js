@@ -11,7 +11,8 @@ export const ROUTES = {
     ABOUT:'/about',
     GESTION:'/gestionnaire',
     USERMANAGER:'/admin/user-manager',
-    DONMANAGER:'/admin/don-manager'
+    DONMANAGER:'/admin/don-manager',
+    RAPPORTMANAGER:'/admin/rapport-manager'
   };
   export default ROUTES;
   

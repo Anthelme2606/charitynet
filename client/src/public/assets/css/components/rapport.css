@@ -1,0 +1,39 @@
+.rapport-card {
+    transition: transform 0.2s !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  }
+  .card.rapport-card{
+    background-color:var(--white)!important;
+    border:none!important;
+    font-size:14px !important;
+  }
+  .card-body.rapport-card-body{
+    background-color:var(--white)!important;
+    border:none!important;
+    font-size:14px !important;
+  }
+  .rapport-primary{
+    color:var(--primary-color) !important;
+    background-color:var(--sidebar)!important;
+  }
+  .rapport-success{
+    color:var(--orange) !important;
+    background-color:var(--sidebar)!important;
+  }
+  .rapport-valider{
+    color:var(--green) !important;
+    background-color:var(--sidebar)!important;
+  }
+  .rapport-text{
+    color:var(--violet) !important;
+    font-size:15px !important;
+  }
+  .rapport-card:hover {
+    transform: translateY(-5px) !important;
+  }
+  
+  .btn-custom {
+    padding: 0.25rem 0.5rem !important;
+    font-size: 10px !important;
+  }
+  

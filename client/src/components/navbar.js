@@ -12,7 +12,7 @@ import SidebarLinks from "../hooks/sidebarLinks";
 import useSearchOpen from "../hooks/searchHook.js";
 import ScrollToTop from "../hooks/useScroll.js";
 import { BellFill, List, Search, PersonFill,X } from 'react-bootstrap-icons';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Dropdown from '../partials/dropdown';
 import Cookies from 'js-cookie';
 import ROUTES from '../app/routes/names';
 
@@ -113,12 +113,16 @@ const links=SidebarLinks();
                 <BellFill />
                 <span className="visually-hidden">Notifications</span>
               </button>
+            
               <button className={`btn sidebar-opener btn-outline-orange ms-2 ${isSidebarClosed? 'open':'d-none'}
                 `}
                 onClick={openSidebar}
                 >
                 <List />
                 <span className="visually-hidden">Open</span>
+              </button>
+              <button className="btn btn-outline-orange mx-4">
+              <Dropdown/>
               </button>
             </div>
           )}
@@ -142,6 +146,7 @@ const links=SidebarLinks();
               <List />
               <span className="visually-hidden">Menu</span>
             </button>
+          
           </div>
         </div>
       </div>

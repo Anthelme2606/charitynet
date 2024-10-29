@@ -9,6 +9,8 @@
 .sidebar {
   z-index: 9999;
   width: 250px;
+  display:flex;
+  flex-direction:column;
   background-color: var(--sidebar);
   position: fixed;
   top: 76px;
@@ -72,6 +74,7 @@ ul li {
 .overlay.active {
   display: block;
 }
+
 @media (min-width: 992px) {
   /* .menu-btn {
     display: none;

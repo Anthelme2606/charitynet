@@ -119,10 +119,26 @@ body{
    
 
 }
+.test-pop{
+  font-size:12px !important;
+  color:var(--violet) !important;
+  background-color:var(--sidebar) !important;
+  transition:background-color 0.3s ease-in-out !important;
+}
+.test-pop:hover{
+  background-color:var(--violet)!important;
+  color:var(--sidebar) !important;
+}
 .preview{
   color:var(--primary-color) !important;
   font-weight:bold !important;
   font-size:20px !important;
+}
+.badge-montant{
+  color:var(--green) !important;
+  font-weight:bold !important;
+  font-size:14px !important;
+  background-color:var(--sidebar) !important;
 }
 .primary-color{
   background-color: black !important;
@@ -266,6 +282,9 @@ body{
     .card-footer svg {
       background-color: var(--white) !important;
     }
+    /* .card.card-dashboard{
+      height:150px !important;
+    } */
     
 @media(max-width:768px){
     .login-body {
