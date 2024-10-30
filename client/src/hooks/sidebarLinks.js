@@ -1,6 +1,6 @@
-import React from 'react';
-import {useUser} from "../app/providers/AppProvider";
-import ROUTES from '../app/routes/names';
+import React from "react";
+import { useUser } from "../app/providers/AppProvider";
+import ROUTES from "../app/routes/names";
 
 const SidebarLinks = () => {
   const { user } = useUser();
@@ -26,8 +26,7 @@ const SidebarLinks = () => {
                 { name: 'Historique des dons', link: '/donor/history' },
                 { name: 'Profil', link: '/donor/profile' },
                 { name: 'Notifications', link: '/donor/notifications' },
-                { name: 'À propos', link: ROUTES.ABOUT },
-                { name: 'Déconnexion', link:ROUTES.LOGOUT }
+                { name: 'À propos', link: ROUTES.ABOUT }
             );
             break;
     
@@ -77,11 +76,10 @@ const SidebarLinks = () => {
             );
             break;
     }
-    
 
     return links;
   } else {
-    return null;  
+    return null;
   }
 };
 

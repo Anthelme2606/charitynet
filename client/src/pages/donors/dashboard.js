@@ -3,9 +3,43 @@ import DashboardLayout from "../../layouts/dashboardLayout";
 import Card from "../../components/Card";
 import CardUser from "../../components/CardUser";
 import LineGraph from "../../components/LineGraph";
-import ProjectTileCard from "../../components/ProjectTileCard";
+import RapportCard from "../../components/RapportCard";
+import UserTable from "../../components/UserTable";
 
 const DonorDashboard = () => {
+  const rapportsData = [
+    {
+      nom: "Rapport Q1 2023",
+      type: "pdf",
+      url: "https://example.com/rapport1.pdf"
+    },
+    {
+      nom: "Présentation Projet X",
+      type: "docx",
+      url: "https://example.com/presentation.docx"
+    },
+    {
+      nom: "Analyse Financière",
+      type: "pdf",
+      url: "https://example.com/analyse.pdf"
+    },
+    {
+      nom: "Plan Marketing 2023",
+      type: "docx",
+      url: "https://example.com/marketing.docx"
+    }
+  ];
+
+  const users = [
+    { email: "user1@example.com", userType: "Beneficiary", country: "France" },
+    {
+      email: "user2@example.com",
+      userType: "Beneficiary",
+      country: "Belgique"
+    },
+    { email: "user3@example.com", userType: "Beneficiary", country: "Suisse" }
+  ];
+
   return (
     <DashboardLayout>
       <div className="w-100 dashboard-container m-0 p-0">
@@ -42,19 +76,35 @@ const DonorDashboard = () => {
           <LineGraph />
         </div>
       </div>
-      <div className="row-cols-1 row-cols-md-3 ">
-        <div className="col bg-danger">
-          <div className="row-cols-2 row-cols-md-2">
-            <h1>Titre Tule1</h1>
-            <ProjectTileCard
-              title={"Project 1"}
-              description={
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-              }
-              actionText={"Telecharger"}
-            />
+      <div className="row row-cols-1 row-cols-md-3 g-2">
+        <div className="col ">
+          <h3 className="secondary-color text-center">Titre Tule1</h3>
+          <div className="row row-cols-2 row-cols-md-2 g-1">
+            {rapportsData.map((rapport, index) => (
+              <RapportCard key={index} rapport={rapport} />
+            ))}
           </div>
         </div>
+        <div className="col ">
+          <h3 className="secondary-color text-center ">Titre Tule2</h3>
+          <div className="row row-cols-2 row-cols-md-2 g-1">
+            {rapportsData.map((rapport, index) => (
+              <RapportCard key={index} rapport={rapport} />
+            ))}
+          </div>
+        </div>
+        <div className="col ">
+          <h3 className="secondary-color text-center">Titre Tule3</h3>
+          <div className="row row-cols-2 row-cols-md-2 g-1">
+            {rapportsData.map((rapport, index) => (
+              <RapportCard key={index} rapport={rapport} />
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="w-100 mt-4">
+        <h1 className="secondary-color ">Liste Des Beneficiaire</h1>
+        <UserTable users={users} />
       </div>
     </DashboardLayout>
   );
