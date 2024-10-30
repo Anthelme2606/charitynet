@@ -31,16 +31,35 @@
 
     /* Sidebar styles */
     .sidebar {
-      width: 250px;
-      height: 100vh;
-      background-color: var(--sidebar);
-      color: var(--primary-color);
-      display: flex;
-      flex-direction: column;
-      position: fixed;
-      padding: 10px;
-      overflow-y:auto;
-    }
+  z-index: 9999;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--sidebar);
+  position: fixed;
+  top: 76px;
+  left: -250px;
+  height: calc(100vh - 76px);
+  overflow-y: auto;
+  color: var(--primary-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+ .sidebar.active {
+  left: 0;
+}
+.sidebar.close{
+left: -250px;
+  transform:translateX(-300px) !important;
+}
+.sidebar.open{
+    left: 0;
+  transform:translateX(0) !important;
+}
+.overlay.active {
+  display: block;
+}
 
     .sidebar .application {
         display:flex;
@@ -64,18 +83,18 @@
     }
     
 
-    .nav-links {
+    .side-links {
       flex: 1;
       list-style: none;
       padding: 0;
       margin-top: 10px;
     }
 
-    .nav-links li {
+    .side-links li {
       margin-bottom: 12px;
     }
 
-    .nav-links a {
+    .side-links a {
       color: var(--primary-color);
       text-decoration: none;
       font-size: 14px;
@@ -86,12 +105,12 @@
       transition: background 0.3s;
     }
 
-    .nav-links a:hover {
+    .side-links a:hover {
       background-color: var(--orange);
       color: var(--white);
     }
 
-    .nav-links .icon-circle {
+    .side-links .icon-circle {
       background-color: var(--gray);
       color: var(--violet);
       width: 30px;
@@ -126,14 +145,14 @@
     }
 
     /* User info */
-    .user-info {
+    .authenticator-info {
       background-color: var(--sidebar);
       padding: 15px;
       /* text-align: center; */
       border-top: 1px solid #e0e0e0;
     }
 
-    .user-info .user-initial {
+    .authenticator-info .user-initial {
       width: 36px;
       height: 36px;
       background-color: var(--primary-color);
@@ -146,13 +165,13 @@
       /* margin: 0 auto 10px; */
     }
 
-    .user-info h4 {
+    .authenticator-info h4 {
       font-size: 16px;
       color: var(--primary-color);
       margin-bottom: 5px;
     }
 
-    .user-info p {
+    .authenticator-info p {
       font-size: 12px;
       color: #666;
     }
@@ -188,13 +207,33 @@
 .margin-4{
     margin:10px;
 }
+/* Webkit browsers (Chrome, Edge, Safari) */
+.sidebar::-webkit-scrollbar {
+  width: 8px; /* Set scrollbar width */
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: var(--sidebar); /* Track background color */
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color); /* Scroll thumb color */
+  border-radius: 4px; /* Round edges */
+}
+
+/* Firefox */
+.sidebar {
+  scrollbar-width: thin; /* Thin scrollbar */
+  scrollbar-color: var(--gray) var(--sidebar); /* Thumb and track colors */
+}
+
 
     /* Responsive adjustments */
     @media screen and (max-width: 768px) {
       .sidebar {
         width: 200px;
       }
-      .nav-links a, .additional-links a {
+      .side-links a, .additional-links a {
         font-size: 14px;
       }
     }
@@ -202,14 +241,14 @@
 </head>
 <body>
 
-<div class="sidebar">
+<aside class="sidebar open">
     <div class="application">
         <h4>CharityNet</h4>
         <span class="bi bi-x-circle closer"></span>
     </div>
  
 
-  <ul class="nav-links">
+  <ul class="side-links">
     <li><a href="#"><span class="icon-circle"><i class="bi bi-house-door"></i></span> Home</a></li>
     <li><a href="#"><span class="icon-circle"><i class="bi bi-heart"></i></span> Donations</a></li>
     <li><a href="#"><span class="icon-circle"><i class="bi bi-graph-up"></i></span> Impact</a></li>
@@ -223,16 +262,17 @@
     <p class="authenticated-text">Vous êtes connecté</p>
   </div>
 
-  <div class="user-info">
+  <div class="authenticator-info">
     <div class="user-init-name">
         <div class="user-initial">JD</div>
         <h4>John Doe</h4>
     </div>
    
     <p class="margin-4">john.doe@example.com</p>
+    <p class="margin-4 text-center mx-4 px-4 bg-white">Togo</p>
     <a href="#" class="logout">Logout</a>
   </div>
-</div>
+</aside>
 
 </body>
 </html>

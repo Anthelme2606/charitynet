@@ -2,7 +2,7 @@ import React from 'react';
 
 function StatsCard({ titre, icon, value, percentage, isUp = false, isDown = false }) {
   return (
-    <div className="col-xl-6 col-sm-6 grid-margin stretch-card">
+   
       <div className="card">
         <div className="card-body">
           <div className="row">
@@ -23,7 +23,7 @@ function StatsCard({ titre, icon, value, percentage, isUp = false, isDown = fals
           <h6 className="text-muted font-weight-normal">{titre}</h6>
         </div>
       </div>
-    </div>
+  
   );
 }
 

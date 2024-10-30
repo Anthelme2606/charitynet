@@ -8,76 +8,75 @@ const SidebarLinks = () => {
 
   if (user?.isAuth) {
     switch (user?.auth?.userType) {
-        case 'Admin':
-            links.push(
-                { name: 'Tableau de bord', link: ROUTES.DASHBOARD },
-                { name: 'Gérer les utilisateurs',link:ROUTES.USERMANAGER  },
-                { name: 'Gestion des dons', link:ROUTES.DONMANAGER },
-                { name: 'Caisse', link:"admin/caisse" },
-                { name: 'Rapports', link: ROUTES.RAPPORTMANAGER },
-                { name: 'Déconnexion', link:ROUTES.LOGOUT }
-            );
-            break;
-    
-        case 'Donor':
-            links.push(
-                { name: 'Tableau de bord', link: '/dashboard' },
-                { name: 'Faire un don', link: '/donor/donate' },
-                { name: 'Historique des dons', link: '/donor/history' },
-                { name: 'Profil', link: '/donor/profile' },
-                { name: 'Notifications', link: '/donor/notifications' },
-                { name: 'À propos', link: ROUTES.ABOUT }
-            );
-            break;
-    
-        case 'Beneficiary':
-            links.push(
-                { name: 'Tableau de bord', link: ROUTES.DASHBOARD},
-                { name: 'Demander de l\'aide', link: ROUTES.CAUSECREATE},
-                { name: 'Suivi des demandes', link: ROUTES.TRACK},
-                { name: 'Gérer mes dons', link: ROUTES.GESTION },
-                { name: 'Mon portefeuille', link: ROUTES.WALLET},
-                { name: 'Profil', link: '/beneficiary/profile' },
-                { name: 'Notifications', link: '/beneficiary/notifications' },
-                { name: 'À propos', link: ROUTES.ABOUT }
-            );
-            break;
-    
-        case 'OBNL':
-            links.push(
-                { name: 'Tableau de bord', link: '/dashboard' },
-                { name: 'Gérer les projets', link: '/obnl/projects' },
-                { name: 'Historique des dons', link: '/obnl/donations' },
-                { name: 'Profil', link: '/obnl/profile' },
-                { name: 'Rapports', link: '/obnl/reports' },
-                { name: 'À propos', link:ROUTES.ABOUT }
-            );
-            break;
-    
-        case 'User':  // Ajout pour l'utilisateur standard
-            links.push(
-                { name: 'Tableau de bord', link: '/dashboard' },
-                { name: 'Explorer les causes', link: '/causes' },
-                { name: 'Mon profil', link: '/profile' },
-                
-                { name: 'Notifications', link: '/notifications' },
-                { name: 'À propos', link:ROUTES.ABOUT }
-            );
-            break;
-    
-        default:
-            links.push(
-                { name: 'Page d\'accueil', link: '/' },
-                { name: 'À propos', link:ROUTES.ABOUT },
-                { name: 'Contact', link: '/contact' },
-                { name: 'Aide', link: '/help' },
-                { name: 'Inscription', link: '/register' },
-                { name: 'Connexion', link: '/login' }
-            );
-            break;
+      case 'Admin':
+        links.push(
+          { name: 'Tableau de bord', link: ROUTES.DASHBOARD, icon: 'bi-speedometer2' },
+          { name: 'Gérer les utilisateurs', link: ROUTES.USERMANAGER, icon: 'bi-people' },
+          { name: 'Gestion des dons', link: ROUTES.DONMANAGER, icon: 'bi-gift' },
+          { name: 'Caisse', link: "admin/caisse", icon: 'bi-wallet2' },
+          { name: 'Rapports', link: ROUTES.RAPPORTMANAGER, icon: 'bi-bar-chart' },
+          { name: 'Déconnexion', link: ROUTES.LOGOUT, icon: 'bi-box-arrow-right' }
+        );
+        break;
+
+      case 'Donor':
+        links.push(
+          { name: 'Tableau de bord', link: '/dashboard', icon: 'bi-speedometer2' },
+          { name: 'Faire un don', link: '/donor/donate', icon: 'bi-heart' },
+          { name: 'Historique des dons', link: '/donor/history', icon: 'bi-clock-history' },
+          { name: 'Profil', link: '/donor/profile', icon: 'bi-person' },
+          { name: 'Notifications', link: '/donor/notifications', icon: 'bi-bell' },
+          { name: 'À propos', link: ROUTES.ABOUT, icon: 'bi-info-circle' }
+        );
+        break;
+
+      case 'Beneficiary':
+        links.push(
+          { name: 'Tableau de bord', link: ROUTES.DASHBOARD, icon: 'bi-speedometer2' },
+          { name: 'Demander de l\'aide', link: ROUTES.CAUSECREATE, icon: 'bi-question-circle' },
+          { name: 'Suivi des demandes', link: ROUTES.TRACK, icon: 'bi-truck' },
+          { name: 'Gérer mes dons', link: ROUTES.GESTION, icon: 'bi-hand-thumbs-up' },
+          { name: 'Mon portefeuille', link: ROUTES.WALLET, icon: 'bi-wallet2' },
+          { name: 'Profil', link: '/beneficiary/profile', icon: 'bi-person' },
+          { name: 'Notifications', link: '/beneficiary/notifications', icon: 'bi-bell' },
+          { name: 'À propos', link: ROUTES.ABOUT, icon: 'bi-info-circle' }
+        );
+        break;
+
+      case 'OBNL':
+        links.push(
+          { name: 'Tableau de bord', link: '/dashboard', icon: 'bi-speedometer2' },
+          { name: 'Gérer les projets', link: '/obnl/projects', icon: 'bi-briefcase' },
+          { name: 'Historique des dons', link: '/obnl/donations', icon: 'bi-clock-history' },
+          { name: 'Profil', link: '/obnl/profile', icon: 'bi-person' },
+          { name: 'Rapports', link: '/obnl/reports', icon: 'bi-bar-chart' },
+          { name: 'À propos', link: ROUTES.ABOUT, icon: 'bi-info-circle' }
+        );
+        break;
+
+      case 'User': 
+        links.push(
+          { name: 'Tableau de bord', link: '/dashboard', icon: 'bi-speedometer2' },
+          { name: 'Explorer les causes', link: '/causes', icon: 'bi-binoculars' },
+          { name: 'Mon profil', link: '/profile', icon: 'bi-person' },
+          { name: 'Notifications', link: '/notifications', icon: 'bi-bell' },
+          { name: 'À propos', link: ROUTES.ABOUT, icon: 'bi-info-circle' }
+        );
+        break;
+
+      default:
+        links.push(
+          { name: 'Page d\'accueil', link: '/', icon: 'bi-house' },
+          { name: 'À propos', link: ROUTES.ABOUT, icon: 'bi-info-circle' },
+          { name: 'Contact', link: '/contact', icon: 'bi-envelope' },
+          { name: 'Aide', link: '/help', icon: 'bi-question-circle' },
+          { name: 'Inscription', link: '/register', icon: 'bi-pencil-square' },
+          { name: 'Connexion', link: '/login', icon: 'bi-box-arrow-in-right' }
+        );
+        break;
     }
 
-    return links;
+    return links; // Return the array of links directly
   } else {
     return null;
   }

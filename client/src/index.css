@@ -167,7 +167,7 @@ body {
   color: var(--white);
 }
 .card,.card-footer,.card-header,.card.body{ 
-    background: linear-gradient(to bottom right, #f0ecf1, #f8f8f7);
+    background-color: linear-gradient(to bottom right, #f0ecf1, #f8f8f7);
 
   border: none !important;
   outline: none !important;
@@ -283,6 +283,157 @@ body {
     /* .card.card-dashboard{
       height:150px !important;
     } */
+      /* .card.card-dashboard{
+      height:150px !important;
+    } */
+    .text-success {
+      color: #00d25b !important; }
+    
+    a.text-success:hover, a.text-success:focus {
+      color: #00863a !important; }
+.font-weight-light {
+  font-weight: 300; }
+
+.font-weight-medium {
+  font-weight: 500; }
+
+.font-weight-bold {
+  font-weight: 700; }
+
+.font-weight-normal {
+  font-weight: normal; }
+    .icon-me {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .icon-me.icon-me-box-primary {
+        width: 40px;
+        height: 37px;
+        background: rgba(0, 144, 231, 0.11);
+        border-radius: 7px;
+        color: #0090e7; }
+      .icon-me .icon-me-item {
+        font-size: 20px; }
+    
+    .icon-me {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .icon-me.icon-me-box-secondary {
+        width: 40px;
+        height: 37px;
+        background: rgba(228, 234, 236, 0.11);
+        border-radius: 7px;
+        color: #e4eaec; }
+      .icon-me .icon-me-item {
+        font-size: 20px; }
+    
+    .icon-me {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .icon-me.icon-me-box-success {
+        width: 40px;
+        height: 37px;
+        background: rgba(0, 210, 91, 0.11);
+        border-radius: 7px;
+        color: #00d25b; }
+      .icon-me .icon-me-item {
+        font-size: 20px; }
+    
+    .icon-me {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .icon-me.icon-me-box-info {
+        width: 40px;
+        height: 37px;
+        background: rgba(143, 95, 232, 0.11);
+        border-radius: 7px;
+        color: #8f5fe8; }
+      .icon-me .icon-me-item {
+        font-size: 20px; }
+    
+    .icon-me {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .icon-me.icon-me-box-warning {
+        width: 40px;
+        height: 37px;
+        background: rgba(255, 171, 0, 0.11);
+        border-radius: 7px;
+        color: #ffab00; }
+      .icon-me .icon-me-item {
+        font-size: 20px; }
+    
+    .icon-me {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .icon-me.icon-me-box-danger {
+        width: 40px;
+        height: 37px;
+        background: rgba(252, 66, 74, 0.11);
+        border-radius: 7px;
+        color: #fc424a; }
+      .icon-me .icon-me-item {
+        font-size: 20px; }
+    
+    .icon-me {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .icon-me.icon-me-box-light {
+        width: 40px;
+        height: 37px;
+        background: rgba(255, 255, 255, 0.11);
+        border-radius: 7px;
+        color: #ffffff; }
+      .icon-me .icon-me-item {
+        font-size: 20px; }
+    
+    .icon-me {
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .icon-me.icon-me-box-dark {
+        width: 40px;
+        height: 37px;
+        background: rgba(13, 13, 13, 0.11);
+        border-radius: 7px;
+        color: #0d0d0d; }
+      .icon-me .icon-me-item {
+        font-size: 20px; }
+    
+    .stretch-card {
+      display: -webkit-flex;
+      display: flex;
+      -webkit-align-items: stretch;
+      align-items: stretch;
+      -webkit-justify-content: stretch;
+      justify-content: stretch; }
+      .stretch-card > .card {
+        width: 100%;
+        min-width: 100%; }
+    .grid-margin {
+      margin-bottom: 1.5rem; }
+    
+    @media (min-width: 576px) {
+      .grid-margin-sm-0 {
+        margin-bottom: 0; } }
+    
+    @media (min-width: 768px) {
+      .grid-margin-md-0 {
+        margin-bottom: 0; } }
+    
+    @media (min-width: 992px) {
+      .grid-margin-lg-0 {
+        margin-bottom: 0; } }
+    
+    @media (min-width: 1200px) {
+      .grid-margin-xl-0 {
+        margin-bottom: 0; } }
     
 @media(max-width:768px){
     .login-body {

@@ -44,7 +44,7 @@ const DonorDashboard = () => {
     <DashboardLayout>
       <div className="w-100 dashboard-container m-0 p-0">
         <div className="row">
-    
+        <div className="col-xl-4 col-sm-6 grid-margin stretch-card">
         <CardUser 
             titre="Dons" 
             icon="bi-arrow-up-left" 
@@ -52,7 +52,8 @@ const DonorDashboard = () => {
             percentage={`${50}`} 
             value={`2500€`}
         />
-         
+        </div>
+        <div className="col-xl-4 col-sm-6 grid-margin stretch-card">
          <CardUser 
             titre="Dons" 
             icon="bi-arrow-up-left" 
@@ -60,7 +61,8 @@ const DonorDashboard = () => {
             percentage={`${50}`} 
             value={`2500€`}
         />
-          
+           </div>
+           <div className="col-xl-4 col-sm-6 grid-margin stretch-card">
           <CardUser 
             titre="Dons" 
             icon="bi-arrow-up-left" 
@@ -68,6 +70,7 @@ const DonorDashboard = () => {
             percentage={`${50}`} 
             value={`2500€`}
         />
+        </div>
         </div>
       </div>
       <div className="w-100 dashboard-container mt-2 p-4">

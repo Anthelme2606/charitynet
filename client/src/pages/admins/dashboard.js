@@ -102,7 +102,7 @@ const AdminDashboard = () => {
           {/* Right Column (Main Dashboard Info) */}
           <div className="col-md-7">
           <div className="row">
-   
+          <div className="col-xl-6 col-sm-6 grid-margin stretch-card">
         <CardUser 
             titre="Utilisateurs" 
             icon="bi-arrow-up-left" 
@@ -110,6 +110,8 @@ const AdminDashboard = () => {
             percentage={`${statUserMonth}`} 
             value={totalUsers}
         />
+        </div>
+         <div className="col-xl-6 col-sm-6 grid-margin stretch-card">
          <CardUser 
             titre="Bénéficiaires" 
             icon="bi-arrow-up-left" 
@@ -117,6 +119,8 @@ const AdminDashboard = () => {
             percentage={`${statBeneficiary}`} 
             value={allBeneficiaries}
         />
+        </div>
+         <div className="col-xl-6 col-sm-6 grid-margin stretch-card">
          <CardUser 
             titre="Donateurs" 
             icon="bi-arrow-up-left" 
@@ -124,6 +128,8 @@ const AdminDashboard = () => {
             percentage={`${statDonor}`} 
             value={allDonors}
         />
+        </div>
+         <div className="col-xl-6 col-sm-6 grid-margin stretch-card">
          <CardUser 
             titre="Dons" 
             icon="bi-arrow-up-left" 
@@ -131,6 +137,7 @@ const AdminDashboard = () => {
             percentage={`${statUserMonth}`} 
             value={`2500€`}
         />
+        </div>
    
 
    
