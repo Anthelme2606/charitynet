@@ -15,7 +15,7 @@ const SidebarLinks = () => {
           { name: 'Gestion des dons', link: ROUTES.DONMANAGER, icon: 'bi-gift' },
           { name: 'Caisse', link: "admin/caisse", icon: 'bi-wallet2' },
           { name: 'Rapports', link: ROUTES.RAPPORTMANAGER, icon: 'bi-bar-chart' },
-          { name: 'Déconnexion', link: ROUTES.LOGOUT, icon: 'bi-box-arrow-right' }
+          // { name: 'Déconnexion', link: ROUTES.LOGOUT, icon: 'bi-box-arrow-right' }
         );
         break;
 

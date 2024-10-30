@@ -7,6 +7,7 @@ import ROUTES  from '../app/routes/names';
 import { useUser } from "../app/providers/AppProvider";
 const Sidebar = () => {
   const { user } = useUser();
+  console.log(user);
   const links = SidebarLinks();
   const { isMobile } = useIsMobile();
 
@@ -17,6 +18,17 @@ const Sidebar = () => {
       sidebar.classList.add('close');
     }
   };
+  const TwoInitial = ({ username }) => {
+    if (!username) return 'US';
+  
+    // Récupérer les deux premières lettres, mettre en majuscule
+    const initials = username.slice(0, 2).toUpperCase();
+    
+    return initials;
+  };
+  
+
+  
 
   return (
     <>
@@ -56,15 +68,17 @@ const Sidebar = () => {
 
   <div className="authenticator-info">
     <div className="user-init-name">
-        <div className="user-initial">JD</div>
-        <h4>{user?.username}</h4>
+        <div className="user-initial">
+        <TwoInitial username={user?.auth?.username} />
+        </div>
+        <h4>{user?.auth?.username}</h4>
     </div>
    
     <p className="margin-4">
-      {user?.email}
+      {user?.auth?.email}
     </p>
     <p className="margin-4 text-center mx-4 px-4 bg-white">
-      {user?.country}
+      {user?.auth?.country}
     </p>
     <NavLink to={ROUTES.LOGOUT} className="link a-link logout">Déconnexion</NavLink>
   </div>
