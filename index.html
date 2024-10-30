@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CharityNet Sidebar</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+  <style>
+    :root {
+      --orange: #f8a708;
+      --primary-color: blueviolet;
+      --white: #fff;
+      --sidebar: #f7fafc;
+      --color-bg: #f5f5f5;
+      --gray: #e0e0e0;
+      --violet: #541670;
+      --green: #008000;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    /* Sidebar styles */
+    .sidebar {
+      width: 250px;
+      height: 100vh;
+      background-color: var(--sidebar);
+      color: var(--primary-color);
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      padding: 10px;
+      overflow-y:auto;
+    }
+
+    .sidebar .application {
+        display:flex;
+        justify-content:space-between;
+
+     
+      width:100%;
+      padding: 20px ;
+      font-size: 20px;
+      border-radius:6px;
+      color: var(--violet);
+      margin-bottom: 15px;
+      background-color:var(--white);
+    }
+    .application .closer{
+        color:var(--orange);
+        font-weight:bold;
+        cursor:pointer;
+       
+        transition:all 0.3s ease-in-out;
+    }
+    
+
+    .nav-links {
+      flex: 1;
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+
+    .nav-links li {
+      margin-bottom: 12px;
+    }
+
+    .nav-links a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      padding: 8px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .nav-links a:hover {
+      background-color: var(--orange);
+      color: var(--white);
+    }
+
+    .nav-links .icon-circle {
+      background-color: var(--gray);
+      color: var(--violet);
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin-right: 10px;
+      font-size: 12px;
+    }
+
+    /* Additional links */
+    .additional-links {
+      margin-top: auto;
+      margin-bottom: 15px;
+    }
+
+    .additional-links a {
+      color: var(--violet);
+      text-decoration: none;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      background-color:var(--gray);
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+    .text-green{
+        color :var(--green);
+    }
+
+    /* User info */
+    .user-info {
+      background-color: var(--sidebar);
+      padding: 15px;
+      /* text-align: center; */
+      border-top: 1px solid #e0e0e0;
+    }
+
+    .user-info .user-initial {
+      width: 36px;
+      height: 36px;
+      background-color: var(--primary-color);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 14px;
+      /* margin: 0 auto 10px; */
+    }
+
+    .user-info h4 {
+      font-size: 16px;
+      color: var(--primary-color);
+      margin-bottom: 5px;
+    }
+
+    .user-info p {
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* Logout button */
+    .logout {
+        width:100%;
+      background-color: red;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      margin-top: 10px;
+      text-align:center;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+    .authenticated-text{
+        color: var(--green); 
+        font-size: 12px; 
+        text-align: center;
+    }
+
+    .logout:hover {
+      background-color: darkred;
+    }
+    .user-init-name{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+    }
+.margin-4{
+    margin:10px;
+}
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+      .sidebar {
+        width: 200px;
+      }
+      .nav-links a, .additional-links a {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="application">
+        <h4>CharityNet</h4>
+        <span class="bi bi-x-circle closer"></span>
+    </div>
+ 
+
+  <ul class="nav-links">
+    <li><a href="#"><span class="icon-circle"><i class="bi bi-house-door"></i></span> Home</a></li>
+    <li><a href="#"><span class="icon-circle"><i class="bi bi-heart"></i></span> Donations</a></li>
+    <li><a href="#"><span class="icon-circle"><i class="bi bi-graph-up"></i></span> Impact</a></li>
+    <li><a href="#"><span class="icon-circle"><i class="bi bi-people"></i></span> Community</a></li>
+  </ul>
+
+  <div class="additional-links">
+    <a href="#"><span class="icon-circle"><i class="bi bi-building"></i></span> Devenir un obnl</a>
+    <a href="#"><span class="icon-circle"><i class="bi bi-person-check"></i></span> Devenir un beneficiaire</a>
+    <a href="#"><span class="icon-circle"><i class="bi bi-cash-coin"></i></span> Devenir un donateur</a>
+    <p class="authenticated-text">Vous êtes connecté</p>
+  </div>
+
+  <div class="user-info">
+    <div class="user-init-name">
+        <div class="user-initial">JD</div>
+        <h4>John Doe</h4>
+    </div>
+   
+    <p class="margin-4">john.doe@example.com</p>
+    <a href="#" class="logout">Logout</a>
+  </div>
+</div>
+
+</body>
+</html>
