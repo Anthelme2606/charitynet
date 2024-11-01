@@ -115,6 +115,12 @@ body {
   overflow: auto !important;
   overflow-x: hidden !important;
 }
+.fs-small{
+  font-size:10px;
+  text-align: center;
+  border-radius: 6px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
 .test-pop {
   font-size: 12px !important;
   color: var(--violet) !important;
@@ -286,6 +292,20 @@ body {
       /* .card.card-dashboard{
       height:150px !important;
     } */
+    .social-button {
+      background-color: #e0e0e0;
+      border: none;
+      border-radius: 5px;
+      padding: 10px;
+      cursor: pointer;
+      flex: 1;
+      color:black !important;
+      margin: 0 5px;
+  }
+    .secondary-color{
+      color:var(--violet) !important;
+      font-weight: bold !important;
+    }
     .text-success {
       color: #00d25b !important; }
     
@@ -417,7 +437,7 @@ body {
         width: 100%;
         min-width: 100%; }
     .grid-margin {
-      margin-bottom: 1.5rem; }
+      margin-bottom: 1rem; }
     
     @media (min-width: 576px) {
       .grid-margin-sm-0 {

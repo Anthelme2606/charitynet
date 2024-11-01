@@ -16,6 +16,8 @@ export const ROUTES = {
   MADEDONATION: "/don/made-donation",
   PROFIL: "/profil",
   HISTORY: "/don/history",
-  NOTIFICATION: "/notification"
+  NOTIFICATION: "/notification",
+  CAISSE: "/admin/caisse",
+  MAKEDONATION: "/donor/faire-don",
 };
 export default ROUTES;

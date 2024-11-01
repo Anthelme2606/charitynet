@@ -1,6 +1,7 @@
 import React from "react";
-
+import { useUser } from "../app/providers/AppProvider";
 const RapportCard = ({ rapport }) => {
+  const {user} =useUser();
   const getIconClass = (type) =>
     type === "pdf" ? "bi-file-earmark-pdf" : "bi-file-earmark-word";
 
@@ -43,7 +44,7 @@ const RapportCard = ({ rapport }) => {
               <i className="bi bi-download"></i> Télécharger
             </button>
           </div>
-          <div className="d-flex justify-content-between mt-2">
+         { user?.auth?.userType==="Admin" && (<div className="d-flex justify-content-between mt-2">
             <button
               className="btn btn-danger btn-custom"
               onClick={() => rejeterRapport(rapport.nom)}
@@ -56,7 +57,7 @@ const RapportCard = ({ rapport }) => {
             >
               <i className="bi bi-check-circle"></i> Valider
             </button>
-          </div>
+          </div>)}
         </div>
       </div>
     </div>

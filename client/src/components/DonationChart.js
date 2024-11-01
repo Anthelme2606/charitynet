@@ -1,36 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Suivi des Dons</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }
-    h2 {
-      margin-bottom: 10px;
-    }
-    #chartContainer {
-      width: 80%;
-      max-width: 700px;
-    }
-  </style>
-</head>
-<body>
-  <h2>Suivi des Dons Mensuels</h2>
-  <div id="chartContainer">
-    <canvas id="donationChart" width="400" height="200"></canvas>
-  </div>
+import React, { useEffect, useRef } from 'react';
+import { Chart, registerables } from 'chart.js';
+import useIsMobile from '../hooks/mobileHook';
+Chart.register(...registerables);
 
-  <!-- Insertion de Chart.js depuis un CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+const DonationChart = () => {
+    const isMobile =useIsMobile();
+  const chartRef = useRef(null);
+  const chartInstance = useRef(null);
 
-  <script>
+  useEffect(() => {
     // Obtenir le mois et l'année actuels
     const today = new Date();
     const currentYear = today.getFullYear();
@@ -47,8 +25,8 @@
     };
 
     // Initialiser le graphique avec Chart.js
-    const ctx = document.getElementById('donationChart').getContext('2d');
-    const donationChart = new Chart(ctx, {
+    const ctx = chartRef.current.getContext('2d');
+    chartInstance.current = new Chart(ctx, {
       type: 'line',
       data: {
         labels: months,
@@ -57,14 +35,14 @@
             label: 'Contribution Moyenne',
             data: contributionsData.averageContributions,
             borderColor: 'rgba(75, 192, 192, 1)',
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            backgroundColor: 'rgba(255, 255, 192, 0.2)',
             fill: true
           },
           {
             label: 'Contribution du Donateur Actuel',
             data: contributionsData.currentDonorContributions,
             borderColor: 'rgba(153, 102, 255, 1)',
-            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            backgroundColor: 'rgba(255, 255, 255, 0.2)',
             fill: true
           }
         ]
@@ -90,18 +68,34 @@
     });
 
     // Fonction pour mettre à jour dynamiquement les données
-    function updateData(newAverage, newCurrentDonor) {
-      donationChart.data.datasets[0].data = newAverage;
-      donationChart.data.datasets[1].data = newCurrentDonor;
-      donationChart.update();
-    }
+    const updateData = (newAverage, newCurrentDonor) => {
+      chartInstance.current.data.datasets[0].data = newAverage;
+      chartInstance.current.data.datasets[1].data = newCurrentDonor;
+      chartInstance.current.update();
+    };
 
     // Exemple d'utilisation de la fonction d'updateData (si des données changent)
-    setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       const newAverage = [10, 10, 310, 330, 10, 430, 480, 490, 510, 560, 600, 640].slice(0, currentMonth + 1);
       const newCurrentDonor = [210, 260, 320, 170, 400, 460, 480, 520, 540, 580, 610, 630].slice(0, currentMonth + 1);
       updateData(newAverage, newCurrentDonor);
-    }, 5000); // Met à jour les données après 5 secondes
-  </script>
-</body>
-</html>
+    }, 1000); // Met à jour les données après 5 secondes
+
+    // Nettoyage pour éviter les fuites de mémoire
+    return () => {
+      clearTimeout(timeoutId);
+      chartInstance.current.destroy();
+    };
+  }, []);
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}>
+      <h2>Suivi des Dons Mensuels</h2>
+      <div id="chartContainer" style={{ width: '100%'}}>
+        <canvas ref={chartRef} width={`${isMobile? '300': '800'}`} height={`${isMobile?'200':'300'}`}></canvas>
+      </div>
+    </div>
+  );
+};
+
+export default DonationChart;

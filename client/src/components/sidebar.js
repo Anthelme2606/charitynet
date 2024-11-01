@@ -7,7 +7,7 @@ import ROUTES  from '../app/routes/names';
 import { useUser } from "../app/providers/AppProvider";
 const Sidebar = () => {
   const { user } = useUser();
-  console.log(user);
+  // console.log(user);
   const links = SidebarLinks();
   const { isMobile } = useIsMobile();
 
@@ -26,6 +26,29 @@ const Sidebar = () => {
     
     return initials;
   };
+  const UserType=({userType})=>{
+    if(!userType) return "Utilisateur";
+    let userIs=null;
+    switch(userType){
+      case "Admin":
+        userIs="Administrateur";
+        break;
+        case "User":
+          userIs="Simple Utilisateur";
+          break;
+          case "Donor":
+            userIs="Donateur";
+            break;
+            case "Beneficiary":
+              userIs="Beneficiaire";
+              break;
+              default:
+                userIs="Simple Utilisateur";
+                break;
+
+    }
+    return userIs;
+  }
   
 
   
@@ -34,11 +57,20 @@ const Sidebar = () => {
     <>
       <aside className={`sidebar  ${isMobile ? 'd-none' : ''}`}>
       <div className="application">
+        <div className=" d-flex justify-content-between">
         <h4>CharityNet</h4>
         <button className="mx-2 closer px-2 btn-outline-orange"  onClick={closeSidebar}>
         <i className="bi bi-x-lg"></i>
         </button>
+        </div>
+       
+      <span className="badge text-success">
+        <UserType userType={user?.auth?.userType}/>
+      </span>
+ 
+      
     </div>
+    
         
     
      <ul className="side-links py-1">
@@ -51,7 +83,7 @@ const Sidebar = () => {
                   }
                 >
                   <span className="icon-circle">
-                  <i class={`bi ${link.icon}`}></i></span>
+                  <i className={`bi ${link.icon}`}></i></span>
                     {link.name}
                 </NavLink>
               </li>
@@ -59,11 +91,11 @@ const Sidebar = () => {
     
 </ul>
 
-<div class="additional-links">
+<div className="additional-links">
     <NavLink className="link a-link" to="#"><span className="icon-circle"><i className="bi bi-building"></i></span> Devenir un obnl</NavLink>
     <NavLink className="link a-link" to="#"><span className="icon-circle"><i className="bi bi-person-check"></i></span> Devenir un beneficiaire</NavLink>
     <NavLink className="link a-link" to="#"><span className="icon-circle"><i className="bi bi-cash-coin"></i></span> Devenir un donateur</NavLink>
-    <p class="authenticated-text">Vous êtes connecté</p>
+    <p className="authenticated-text">Vous êtes connecté</p>
   </div>
 
   <div className="authenticator-info">
@@ -80,6 +112,7 @@ const Sidebar = () => {
     <p className="margin-4 text-center mx-4 px-4 bg-white">
       {user?.auth?.country}
     </p>
+   
     <NavLink to={ROUTES.LOGOUT} className="link a-link logout">Déconnexion</NavLink>
   </div>
         

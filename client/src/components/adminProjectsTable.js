@@ -2,10 +2,10 @@ import React from 'react';
 import '../public/assets/css/components/adminProjects.css';
 import {NavLink} from 'react-router-dom';
 
-const AdminProjectsTable = ({ projects }) => {
+const AdminProjectsTable = ({ titre='', projects }) => {
   // Filtrer pour obtenir les projets non validés, les trier par date de création (la plus récente en premier) et obtenir les 5 premiers
   const recentInvalidProjects = projects
-    .filter((project) => project.isValid === false)
+   // .filter((project) => project.isValid === false)
     .sort((a, b) => b.createdAt - a.createdAt)
     .slice(0, 5);
 
@@ -27,7 +27,14 @@ const AdminProjectsTable = ({ projects }) => {
 
   return (
     <div className="admin-projects-table">
-      <h1>Nouveaux projets</h1>
+     {
+  titre === '' || titre === null ? (
+    <h1>Nouveaux projets</h1>
+  ) : (
+    <h1>{titre}</h1>
+  )
+}
+
       <table role="table">
         <thead>
           <tr>
@@ -60,7 +67,7 @@ const AdminProjectsTable = ({ projects }) => {
                 </span>
               </td>
               <td>
-              <NavLink to={`/project/${hideId(project.id)}`} className="details-link link">
+              <NavLink to={`/project/${hideId(project?.id)}`} className="details-link link">
                   Détails
                 </NavLink>
               </td>

@@ -13,7 +13,7 @@ const SidebarLinks = () => {
           { name: 'Tableau de bord', link: ROUTES.DASHBOARD, icon: 'bi-speedometer2' },
           { name: 'Gérer les utilisateurs', link: ROUTES.USERMANAGER, icon: 'bi-people' },
           { name: 'Gestion des dons', link: ROUTES.DONMANAGER, icon: 'bi-gift' },
-          { name: 'Caisse', link: "admin/caisse", icon: 'bi-wallet2' },
+          { name: 'Caisse', link:ROUTES.CAISSE, icon: 'bi-wallet2' },
           { name: 'Rapports', link: ROUTES.RAPPORTMANAGER, icon: 'bi-bar-chart' },
           // { name: 'Déconnexion', link: ROUTES.LOGOUT, icon: 'bi-box-arrow-right' }
         );
@@ -22,7 +22,7 @@ const SidebarLinks = () => {
       case 'Donor':
         links.push(
           { name: 'Tableau de bord', link: '/dashboard', icon: 'bi-speedometer2' },
-          { name: 'Faire un don', link: '/donor/donate', icon: 'bi-heart' },
+          { name: 'Faire un don', link: ROUTES.MAKEDONATION, icon: 'bi-heart' },
           { name: 'Historique des dons', link: '/donor/history', icon: 'bi-clock-history' },
           { name: 'Profil', link: '/donor/profile', icon: 'bi-person' },
           { name: 'Notifications', link: '/donor/notifications', icon: 'bi-bell' },

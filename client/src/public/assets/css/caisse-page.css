@@ -1,0 +1,170 @@
+.card-caisse {
+    background-color: #fff !important;
+    border-radius: 8px !important;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important; */
+    overflow: hidden !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+.card-caisse-header {
+    background-color: #f8f9fa !important;
+    padding: 20px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.card-caisse-title {
+    margin: 0 !important;
+    font-size: 24px !important;
+    color: #333 !important;
+}
+
+.badge-caisse {
+    background-color: var(--violet) !important;
+    color: #fff !important;
+    padding: 8px 12px !important;
+    border-radius: 20px !important;
+    font-size: 14px !important;
+}
+
+.card-caisse-content {
+    padding: 20px !important;
+}
+
+.table-caisse-container {
+    overflow-x: auto !important;
+}
+
+.table-caisse {
+    width: 100% !important;
+    border-collapse: separate !important;
+    border-spacing: 0 10px !important;
+}
+
+.th-caisse, .td-caisse {
+    padding: 12px !important;
+    text-align: left !important;
+}
+
+.th-caisse {
+    background-color: #f8f9fa !important;
+    font-weight: bold !important;
+    color: #495057 !important;
+}
+
+.tr-caisse {
+    background-color: #fff !important;
+    transition: all 0.3s ease !important;
+}
+
+.tr-caisse:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-2px) !important;
+}
+
+.btn-caisse {
+    background-color: var(--violet) !important;
+    color: #fff !important;
+    border: none !important;
+    padding: 8px 12px !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s ease !important;
+}
+
+.btn-caisse:hover {
+    background-color: var(--primary-color) !important;
+}
+
+.modal-caisse {
+    display: none !important;
+    position: fixed !important;
+    z-index: 99999 !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: auto !important;
+    background-color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.modal-caisse-content {
+    background-color: #fefefe !important;
+    margin: 15% auto !important;
+    padding: 20px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    width: 80% !important;
+    max-width: 800px !important;
+}
+
+.close-caisse {
+    color: #aaa !important;
+    float: right !important;
+    font-size: 28px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+}
+
+.close-caisse:hover,
+.close-caisse:focus {
+    color: #000 !important;
+    text-decoration: none !important;
+    cursor: pointer !important;
+}
+
+.badge-caisse-success {
+    background-color: #28a745 !important;
+}
+
+.badge-caisse-danger {
+    background-color: #dc3545 !important;
+}
+
+@media (max-width: 768px) {
+    .card-caisse-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    .badge-caisse {
+        margin-top: 10px !important;
+    }
+
+    .table-caisse, .thead-caisse, .tbody-caisse, .th-caisse, .td-caisse, .tr-caisse {
+        display: block !important;
+    }
+
+    .thead-caisse .tr-caisse {
+        position: absolute !important;
+        top: -9999px !important;
+        left: -9999px !important;
+    }
+
+    .tr-caisse {
+        margin-bottom: 15px !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
+    }
+
+    .td-caisse {
+        border: none !important;
+        position: relative !important;
+        padding-left: 50% !important;
+        text-align: right !important;
+    }
+
+    .td-caisse:before {
+        content: attr(data-label) !important;
+        position: absolute !important;
+        left: 6px !important;
+        width: 45% !important;
+        padding-right: 10px !important;
+        white-space: nowrap !important;
+        font-weight: bold !important;
+        text-align: left !important;
+    }
+}

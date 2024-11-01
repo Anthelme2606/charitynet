@@ -111,7 +111,7 @@ const Login = () => {
         <div className={styles['social-login']}>
           <button className={`${styles['social-button']} ${styles.button}`}>Google</button>
           <button className={`${styles['social-button']} ${styles.button}`}>Facebook</button>
-          <button className={`${styles['social-button']} ${styles.button}`}>Twitter</button>
+          {/* <button className={`${styles['social-button']} ${styles.button}`}>Twitter</button> */}
         </div>
         <p>Pas encore de compte ? <NavLink to={ROUTES.SIGNUP}>Inscrivez-vous</NavLink></p>
       </form>

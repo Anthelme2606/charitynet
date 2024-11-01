@@ -16,7 +16,7 @@ import CardUser from '../../components/CardUser';
 
 const AdminDashboard = () => {
   const getNonValidProjects=(projects)=> {
-    return projects.filter(project => project.isValid === false);
+    return projects.filter(project => project?.isValid === false);
   }
   
   const { loading, error, data } = useQuery(GET_TRACKING_PROJECTS, {

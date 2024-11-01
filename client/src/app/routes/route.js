@@ -9,6 +9,7 @@ import AuthRoute from "../middleware/auth";
 import GuardRoute from "../middleware/guard";
 import IsBeneficiary from "../middleware/bene";
 import IsAdmin from "../middleware/admin";
+import IsDonor from "../middleware/donor";
 import Logout from "../../partials/logout";
 import ProjectTracking from "../../pages/beneficiaires/suivie";
 import Wallet from "../../pages/beneficiaires/wallet";
@@ -22,112 +23,45 @@ import MadeDonation from "../../pages/donations/made-donation";
 import HistoryDonation from "../../pages/donations/history";
 import Profil from "../../pages/profil";
 import Notification from "../../pages/notification";
+import CaissePage from "../../pages/admins/caisse-page";
+import MakeDonation from "../../pages/donors/donation";
 import ROUTES from "./names";
 
 const AppRoute = () => {
   return (
-    <>
-      <Routes>
-        <Route path={ROUTES.HOME} element={<Home />} />
-        <Route path={ROUTES.LOGOUT} element={<Logout />} />
+    <Routes>
+      {/* Routes publiques */}
+      <Route path={ROUTES.HOME} element={<Home />} />
+      <Route path={ROUTES.SIGNUP} element={<Signup />} />
+      <Route path={ROUTES.LOGOUT} element={<Logout />} />
+      <Route
+        path={ROUTES.LOGIN}
+        element={<GuardRoute component={Login} redirectTo={ROUTES.DASHBOARD} />}
+      />
+      <Route path={ROUTES.ABOUT} element={<About />} />
 
-        <Route path={ROUTES.SIGNUP} element={<Signup />} />
-        <Route
-          path="/project/:id"
-          element={
-            <IsAdmin>
-              <DetailProjectPage />
-            </IsAdmin>
-          }
-        />
-        <Route
-          path={ROUTES.USERMANAGER}
-          element={
-            <IsAdmin>
-              <ManageUser />
-            </IsAdmin>
-          }
-        />
-        <Route
-          path={ROUTES.DONMANAGER}
-          element={
-            <IsAdmin>
-              <ManageDon />
-            </IsAdmin>
-          }
-        />
-        <Route
-          path={ROUTES.RAPPORTMANAGER}
-          element={
-            <IsAdmin>
-              <RapportPage />
-            </IsAdmin>
-          }
-        />
+      {/* Routes Admin */}
+      <Route path="/project/:id" element={<IsAdmin><DetailProjectPage /></IsAdmin>} />
+      <Route path={ROUTES.CAISSE} element={<IsAdmin><CaissePage /></IsAdmin>} />
+      <Route path={ROUTES.USERMANAGER} element={<IsAdmin><ManageUser /></IsAdmin>} />
+      <Route path={ROUTES.DONMANAGER} element={<IsAdmin><ManageDon /></IsAdmin>} />
+      <Route path={ROUTES.RAPPORTMANAGER} element={<IsAdmin><RapportPage /></IsAdmin>} />
 
-        <Route
-          path={ROUTES.LOGIN}
-          element={
-            <GuardRoute component={Login} redirectTo={ROUTES.DASHBOARD} />
-          }
-        />
-        <Route
-          path={ROUTES.CAUSECREATE}
-          element={
-            <IsBeneficiary>
-              <BeneficiaireDashboard />
-            </IsBeneficiary>
-          }
-        />
-        <Route
-          path={ROUTES.TRACK}
-          element={
-            <IsBeneficiary>
-              <ProjectTracking />
-            </IsBeneficiary>
-          }
-        />
-        <Route
-          path={ROUTES.WALLET}
-          element={
-            <IsBeneficiary>
-              <Wallet />
-            </IsBeneficiary>
-          }
-        />
+      {/* Routes Bénéficiaire */}
+      <Route path={ROUTES.CAUSECREATE} element={<IsBeneficiary><BeneficiaireDashboard /></IsBeneficiary>} />
+      <Route path={ROUTES.TRACK} element={<IsBeneficiary><ProjectTracking /></IsBeneficiary>} />
+      <Route path={ROUTES.WALLET} element={<IsBeneficiary><Wallet /></IsBeneficiary>} />
+      <Route path={ROUTES.GESTION} element={<IsBeneficiary><Gestionnaire /></IsBeneficiary>} />
 
-        <Route
-          path={ROUTES.GESTION}
-          element={
-            <IsBeneficiary>
-              <Gestionnaire />
-            </IsBeneficiary>
-          }
-        />
-
-        <Route
-          path={ROUTES.DASHBOARD}
-          element={<AuthRoute component={Dashboard} />}
-        />
-        <Route
-          path={ROUTES.MADEDONATION}
-          element={<AuthRoute component={MadeDonation} />}
-        />
-        <Route
-          path={ROUTES.PROFIL}
-          element={<AuthRoute component={Profil} />}
-        />
-        <Route
-          path={ROUTES.HISTORY}
-          element={<AuthRoute component={HistoryDonation} />}
-        />
-        <Route
-          path={ROUTES.NOTIFICATION}
-          element={<AuthRoute component={Notification} />}
-        />
-        <Route path={ROUTES.ABOUT} element={<AuthRoute component={About} />} />
-      </Routes>
-    </>
+      {/* Routes Donateur */}
+      <Route path={ROUTES.MADEDONATION} element={<AuthRoute component={MadeDonation} />} />
+      <Route path={ROUTES.HISTORY} element={<AuthRoute component={HistoryDonation} />} />
+      <Route path={ROUTES.MAKEDONATION} element={<IsDonor><MakeDonation /></IsDonor>} />
+      {/* Routes Utilisateur Simple */}
+      <Route path={ROUTES.DASHBOARD} element={<AuthRoute component={Dashboard} />} />
+      <Route path={ROUTES.PROFIL} element={<AuthRoute component={Profil} />} />
+      <Route path={ROUTES.NOTIFICATION} element={<AuthRoute component={Notification} />} />
+    </Routes>
   );
 };
 

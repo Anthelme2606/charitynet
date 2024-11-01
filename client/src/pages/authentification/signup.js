@@ -115,8 +115,8 @@ const Signup = () => {
     }
 
     return (
-      <div className="container-fluid">
-      <div className="row vh-100 align-items-center justify-content-center">
+      <div className="w-100 m-1 p-1 d-flex justify-content-center align-items-center vh-100">
+      <div className="row  align-items-center justify-content-center">
           <div className="col-lg-6 order-1 order-lg-2 d-flex justify-content-center">
               <div className="image-container">
                   <img src={In} alt="Signup Visual" className="img-fluid" />
@@ -127,14 +127,11 @@ const Signup = () => {
                   <div className="card-body text-center">
                       <img src={charity} alt="Logo" className="img-fluid signup-logo" />
                       <h3 className="text-dark mb-4">Création de Compte</h3>
-                      <div className="d-flex justify-content-around mb-4">
-                          <button className="btn btn-outline-warning">
-                              <i className="bi bi-google"></i>
-                          </button>
-                          <button className="btn btn-outline-warning">
-                              <i className="bi bi-linkedin"></i>
-                          </button>
-                      </div>
+                      <div className="d-flex justify-content-between mx-4">
+          <button className="social-button">Google</button>
+          <button className="social-button">Facebook</button>
+          {/* <button className="social-button">Twitter</button> */}
+        </div>
                       <p>ou</p>
                       <form onSubmit={handleSubmit}>
                           <div className="mb-3">

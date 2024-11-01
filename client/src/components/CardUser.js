@@ -8,10 +8,15 @@ function StatsCard({ titre, icon, value, percentage, isUp = false, isDown = fals
           <div className="row">
             <div className="col-9">
               <div className="d-flex align-items-center align-self-start">
-                <h3 className="mb-0">{value}</h3>
+                <h3 className="mb-0 secondary-color">{value}</h3>
                 <p className={`ml-2 mb-0 font-weight-medium ${isUp ? 'text-success' : isDown ? 'text-danger' : ''}`}>
-                  {isUp ? `+${percentage}%` : isDown ? `-${percentage}%` : `${percentage}%`}
-                </p>
+    {isNaN(percentage) || percentage === '' ? (
+        <span className="bi bi-arrow-down"></span> // Icône de flèche vers le bas pour valeur non numérique
+    ) : (
+        isUp ? `+${percentage}%` : isDown ? `-${percentage}%` : `${percentage}%`
+    )}
+</p>
+
               </div>
             </div>
             <div className="col-3">

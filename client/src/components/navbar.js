@@ -12,7 +12,6 @@ import SidebarLinks from "../hooks/sidebarLinks";
 import useSearchOpen from "../hooks/searchHook.js";
 import ScrollToTop from "../hooks/useScroll.js";
 import { BellFill, List, Search, PersonFill,X } from 'react-bootstrap-icons';
-import Dropdown from '../partials/dropdown';
 import Cookies from 'js-cookie';
 import ROUTES from '../app/routes/names';
 
@@ -63,6 +62,8 @@ const links=SidebarLinks();
   const navlinks = token ? [
         { href: '#', label: 'Projets' },
         { href: '#', label: 'Services' },
+        { href: '#', label: 'Supports' },
+        { href: '#', label: 'Manuel d\' utilisation' },
        
       ]
     : [
@@ -121,9 +122,7 @@ const links=SidebarLinks();
                 <List />
                 <span className="visually-hidden">Open</span>
               </button>
-              <button className="btn btn-outline-orange mx-4">
-              <Dropdown/>
-              </button>
+             
             </div>
           )}
           </div>

@@ -13,6 +13,13 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: 0.3s;
 }
+.auth-type{
+  background-color:var(--gray);
+  padding:10px;
+  text-align:center;
+  color:var(--green);
+  border-radius:6px;
+}
 
  .sidebar.active {
   left: 0;
@@ -29,17 +36,14 @@ left: -250px;
   display: block;
 }
 
-    .sidebar .application {
+   .application {
         display:flex;
-        justify-content:space-between;
-
-     
+       flex-direction:column;
       width:100%;
-      padding: 20px ;
+      padding: 5px ;
       font-size: 20px;
-      border-radius:6px;
+      /* border-radius:6px; */
       color: var(--white);
-      margin: 15px;
       background-color:var(--violet);
     }
     .application .closer{

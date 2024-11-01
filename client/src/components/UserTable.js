@@ -1,7 +1,10 @@
 import React from "react";
 import "../public/assets/css/components/userManager.css";
+import { useUser } from "../app/providers/AppProvider";
 
 const UserTable = ({users}) => {
+  const {user}=useUser();
+  const author=user || null;
   const handleView = (email) => {
     alert(`Viewing details for ${email}`);
   };
@@ -29,17 +32,17 @@ const UserTable = ({users}) => {
               <td>{user.userType}</td>
               <td>
                 <button
-                  className="action-btn view-btn"
+                  className="action-btn view-btn px-4"
                   onClick={() => handleView(user.email)}
                 >
                   Voir
                 </button>
-                <button
-                  className="action-btn disable-btn"
-                  onClick={() => handleDisable(user.email)}
-                >
-                  Désactiver
-                </button>
+                {author?.auth?.userType=="Admin" && (<button
+            className="action-btn disable-btn px-4"
+            onClick={() => handleDisable(user.email)}
+          >
+            Désactiver
+          </button>)}
               </td>
             </tr>
           ))}
@@ -57,17 +60,17 @@ const UserTable = ({users}) => {
             <strong>Type d'utilisateur:</strong> {user.userType}
           </p>
           <button
-            className="action-btn view-btn"
+            className="action-btn view-btn px-4"
             onClick={() => handleView(user.email)}
           >
             Voir
           </button>
-          <button
-            className="action-btn disable-btn"
+          {author?.auth?.userType=="Admin" && (<button
+            className="action-btn disable-btn px-4"
             onClick={() => handleDisable(user.email)}
           >
             Désactiver
-          </button>
+          </button>)}
         </div>
       ))}
     </div>
